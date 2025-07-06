@@ -13,6 +13,24 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+
+Route::middleware('guest')->group( function(){
+
+Route::view('/login','auth.login')->name('login');
+
 });
+
+
+Route::middleware('auth')->group( function(){
+
+Route::view('/dashboard','users.dashboard')->name('users.dashboard');
+
+Route::post('/logout', function () {
+    Auth::logout();
+    return redirect('/login');
+})->name('logout'); 
+
+
+});
+
+
