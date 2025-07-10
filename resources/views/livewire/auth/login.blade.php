@@ -3,9 +3,15 @@
     <h4 class="mb-4 text-center">Login</h4>
 
     <form wire:submit.prevent="inputLogin">
+
         <div class="mb-3">
             <input type="email" wire:model="email" class="form-control" placeholder="Email" />
         </div>
+        
+          @error('email')
+          <div>{{$message}}</div>
+          @enderror
+
         <div class="mb-3">
             <input type="password" wire:model="password" class="form-control" placeholder="Password" />
         </div>
@@ -26,10 +32,11 @@
         <hr class="flex-grow-1">
       </div>
 
-        <a href="" class="btn google-btn w-100">
+        <a wire:click="redirectToGoogle"  class="btn google-btn w-100">
         <img src="https://img.icons8.com/color/16/000000/google-logo.png" />
         Login with Google
       </a>
+
     </form>
 
 

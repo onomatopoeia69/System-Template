@@ -25,6 +25,7 @@
     .google-btn img {
       margin-right: 8px;
     }
+  
   </style>
 </head>
 <body>
