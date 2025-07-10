@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\Auth\GoogleAuthController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +19,9 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('guest')->group( function(){
 
 Route::view('/login','auth.login')->name('login');
+Route::get('/auth/google', [GoogleAuthController::class, 'redirect'])->name('google.redirect');
+Route::get('/auth/google/callback', [GoogleAuthController::class, 'callback'])->name('google.callback');
+
 
 });
 

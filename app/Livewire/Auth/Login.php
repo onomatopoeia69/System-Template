@@ -68,14 +68,18 @@ class Login extends Component
             if ($this->cooldown === 0) {
                 RateLimiter::clear($this->throttleKey());
             }
-
         }
 
+    }
+
+     public function redirectToGoogle()
+    {
+        return redirect()->route('google.redirect');
     }
 
 
     public function render()
     {
         return view('livewire.auth.login');
-    }
+    }    
 }

@@ -8,7 +8,7 @@
 </head>
 <body>
     
-    <p>TEST</p>
+    <p>{{Auth::user()->name}}</p>
 
     <form method="POST" action="{{ route('logout') }}">
     @csrf
