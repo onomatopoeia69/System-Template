@@ -2,17 +2,18 @@
 
 namespace Tests\Feature;
 
+use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Mockery;
 use Illuminate\Support\Str;
 use Laravel\Socialite\Facades\Socialite;
 use Laravel\Socialite\Contracts\User;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
 class GoogleOAuthTest extends TestCase
 {
 
-    use RefreshDatabase;
+    use DatabaseTransactions;
+    
     /**
      * A basic feature test example.
      */

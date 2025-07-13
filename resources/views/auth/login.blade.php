@@ -25,6 +25,16 @@
     .google-btn img {
       margin-right: 8px;
     }
+
+      .facebook-btn {
+    background-color: #3b5998;
+    color: white;
+  }
+
+  .google-btn img,
+  .facebook-btn img {
+    margin-right: 8px;
+  }
   
   </style>
 </head>

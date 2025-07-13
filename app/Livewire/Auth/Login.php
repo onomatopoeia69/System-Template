@@ -72,11 +72,16 @@ class Login extends Component
 
     }
 
-     public function redirectToGoogle()
+    public function redirectToGoogle()
     {
         return redirect()->route('google.redirect');
     }
 
+    public function redirectToFacebook()
+    {
+        return redirect()->route('facebook.redirect');
+    }
+    
 
     public function render()
     {
