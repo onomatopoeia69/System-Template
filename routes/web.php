@@ -33,7 +33,7 @@ Route::view('/dashboard','users.dashboard')->name('users.dashboard');
 Route::post('/logout', function () {
     Auth::logout();
     return redirect('/login');
-})->name('logout'); 
+})->name('logout');
 
 
 });
