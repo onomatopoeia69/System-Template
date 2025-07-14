@@ -26,8 +26,10 @@ Route::get('/auth/google/callback', [GoogleAuthController::class, 'callback'])->
 
 
 //product
-Route::view('/product','users.product.index')->name('product');
+Route::get('/product',[ProductController::class, 'index'])->name('product');
 Route::post('/product-store', [ProductController::class, 'store'])->name('product.store');
+Route::post('/product-update', [ProductController::class, 'update'])->name('product.update');
+Route::delete('/products/{id}', [ProductController::class, 'destroy'])->name('product.destroy');
 });
 
 
