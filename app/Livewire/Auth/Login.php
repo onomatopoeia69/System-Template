@@ -40,7 +40,18 @@ class Login extends Component
 
         RateLimiter::clear($this->throttleKey()); 
         $this->reset();
-        return redirect()->intended('/dashboard');
+        $this->resetErrorBag(); 
+
+        $user = Auth::user();
+
+        if ($user->role === 'admin') {
+            return redirect()->route('admin.dashboard');
+        }
+        if ($user->role === 'staff') {
+            return redirect()->route('staff.dashboard');
+        }else{
+        return redirect()->route('users.dashboard');
+        }
     }
 
     

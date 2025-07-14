@@ -24,7 +24,6 @@ Route::view('/login','auth.login')->name('login');
 Route::get('/auth/google', [GoogleAuthController::class, 'redirect'])->name('google.redirect');
 Route::get('/auth/google/callback', [GoogleAuthController::class, 'callback'])->name('google.callback');
 
-
 Route::get('/auth/facebook',[FacebookAuthController::class,'redirect'])->name('facebook.redirect');
 Route::get('/auth/facebook/callback',[FacebookAuthController::class,'callback'])->name('facebook.callback');
 
@@ -33,13 +32,28 @@ Route::get('/auth/facebook/callback',[FacebookAuthController::class,'callback'])
 
 Route::middleware('auth')->group( function(){
 
-Route::view('/dashboard','users.dashboard')->name('users.dashboard');
+    Route::view('/dashboard','users.dashboard')->name('users.dashboard');
 
-Route::post('/logout', function () {
-    Auth::logout();
-    return redirect('/login');
-})->name('logout');
+   Route::post('/logout', function () {
+        Auth::logout();
+        request()->session()->invalidate();
+        request()->session()->regenerateToken();
+        return redirect('/login');
+    })->name('users.logout');
 
+});
+
+
+Route::middleware(['auth', 'role:admin'])->group( function(){
+
+     Route::view('/admin/dashboard','admin.dashboard')->name('admin.dashboard');
+
+     Route::post('/admin/logout', function () {
+        Auth::logout();
+        request()->session()->invalidate();
+        request()->session()->regenerateToken();
+        return redirect('/login');
+    })->name('admin.logout');
 
 });
 
