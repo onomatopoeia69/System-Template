@@ -10,8 +10,8 @@ use Tests\TestCase;
 
 class LivewireLoginTest extends TestCase
 {
-
-      use DatabaseTransactions;
+     use DatabaseTransactions;
+      
     /**
      * A basic feature test example.
      */

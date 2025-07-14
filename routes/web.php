@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\FacebookAuthController;
 use App\Http\Controllers\Auth\GoogleAuthController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
@@ -24,12 +25,9 @@ Route::get('/auth/google', [GoogleAuthController::class, 'redirect'])->name('goo
 Route::get('/auth/google/callback', [GoogleAuthController::class, 'callback'])->name('google.callback');
 
 
+Route::get('/auth/facebook',[FacebookAuthController::class,'redirect'])->name('facebook.redirect');
+Route::get('/auth/facebook/callback',[FacebookAuthController::class,'callback'])->name('facebook.callback');
 
-//product
-Route::get('/product',[ProductController::class, 'index'])->name('product');
-Route::post('/product-store', [ProductController::class, 'store'])->name('product.store');
-Route::post('/product-update', [ProductController::class, 'update'])->name('product.update');
-Route::delete('/products/{id}', [ProductController::class, 'destroy'])->name('product.destroy');
 });
 
 

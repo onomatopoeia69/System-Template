@@ -32,10 +32,17 @@
         <hr class="flex-grow-1">
       </div>
 
+      
+       <a wire:click="redirectToFacebook"  class="btn facebook-btn w-100">
+        <img src="https://img.icons8.com/color/16/000000/facebook-new.png" alt="Facebook logo" />
+        Login with Facebook
+      </a>
+
         <a wire:click="redirectToGoogle"  class="btn google-btn w-100">
         <img src="https://img.icons8.com/color/16/000000/google-logo.png" />
         Login with Google
       </a>
+
 
     </form>
 

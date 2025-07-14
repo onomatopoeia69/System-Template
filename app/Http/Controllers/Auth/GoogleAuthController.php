@@ -19,6 +19,8 @@ class GoogleAuthController extends Controller
             ->redirect();
     }
 
+    
+
   
     public function callback()
     {
@@ -43,6 +45,8 @@ class GoogleAuthController extends Controller
             
             Auth::login($existingUser);
 
+             return redirect('/dashboard');
+
         
         }else{ 
 
@@ -57,9 +61,11 @@ class GoogleAuthController extends Controller
             ]);   
             
             Auth::login($newUser);
+
+            return redirect('/dashboard');
         }
 
-        return redirect()->intended('/dashboard');
+       
           
     }
 
