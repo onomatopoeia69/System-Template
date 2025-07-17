@@ -19,6 +19,8 @@ use Illuminate\Support\Facades\Auth;
 
 Route::middleware('guest')->group( function(){
 
+Route::view('/shop','home.index')->name('home.index');
+
 Route::view('/login','auth.login')->name('login');
 Route::get('/auth/google', [GoogleAuthController::class, 'redirect'])->name('google.redirect');
 Route::get('/auth/google/callback', [GoogleAuthController::class, 'callback'])->name('google.callback');
