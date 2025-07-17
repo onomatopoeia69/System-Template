@@ -30,7 +30,7 @@ class GoogleAuthController extends Controller
 
         } catch (\Throwable $e) {
 
-            return redirect()->route('login')->with('error', 'Google authentication failed.');
+            return redirect()->route('auth.login')->with('error', 'Google authentication failed.');
         }
 
         $existingUser = User::where('email', $user->email)->first();

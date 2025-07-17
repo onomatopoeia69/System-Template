@@ -63,7 +63,7 @@ class GoogleOAuthTest extends TestCase
 
         $response = $this->get('/auth/google/callback');
 
-        $response->assertRedirect(route('login'));
+        $response->assertRedirect(route('auth.login'));
         $response->assertSessionHas('error', 'Google authentication failed.');
     }
 }

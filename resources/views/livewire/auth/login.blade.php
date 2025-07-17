@@ -26,24 +26,17 @@
             </button>
         @endif
 
-        <div class="d-flex align-items-center my-3">
-        <hr class="flex-grow-1">
-        <span class="mx-2 text-muted">or</span>
-        <hr class="flex-grow-1">
-      </div>
-
-      
-       <a wire:click="redirectToFacebook"  class="btn facebook-btn w-100">
-        <img src="https://img.icons8.com/color/16/000000/facebook-new.png" alt="Facebook logo" />
-        Login with Facebook
-      </a>
-
-        <a wire:click="redirectToGoogle"  class="btn google-btn w-100">
-        <img src="https://img.icons8.com/color/16/000000/google-logo.png" />
-        Login with Google
-      </a>
-
-
+       <div class="text-center mb-3">
+              <span class="text-muted">or</span>
+            </div>
+             <div class="mb-3">
+              <a  wire:click="redirectToGoogle" class="btn btn-outline-danger w-100 mb-2">
+                <i class="bi bi-google"></i> Login with Google
+              </a>
+              <a wire:click="redirectToFacebook" class="btn btn-outline-primary w-100">
+                <i class="bi bi-facebook"></i> Login with Facebook
+              </a>
+        </div>
     </form>
 
 

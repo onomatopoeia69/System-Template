@@ -28,7 +28,7 @@ class FacebookAuthController extends Controller
 
         } catch (\Throwable $e) {
 
-            return redirect()->route('login')->with('error', 'Facebook authentication failed.');
+            return redirect()->route('auth.login')->with('error', 'Facebook authentication failed.');
         }
 
         $existingUser = User::where('email', $user->email)->first();

@@ -18,9 +18,12 @@ use Illuminate\Support\Facades\Auth;
 */
 
 
+
 Route::middleware('guest')->group( function(){
 
-Route::view('/login','auth.login')->name('login');
+Route::view('/login','auth.login')->name('auth.login');
+Route::view('/register','auth.register')->name('auth.register');
+
 Route::get('/auth/google', [GoogleAuthController::class, 'redirect'])->name('google.redirect');
 Route::get('/auth/google/callback', [GoogleAuthController::class, 'callback'])->name('google.callback');
 
@@ -32,9 +35,9 @@ Route::get('/auth/facebook/callback',[FacebookAuthController::class,'callback'])
 
 Route::middleware('auth')->group( function(){
 
-    Route::view('/dashboard','users.dashboard')->name('users.dashboard');
+Route::view('/dashboard','users.dashboard')->name('users.dashboard');
 
-   Route::post('/logout', function () {
+Route::post('/logout', function () {
         Auth::logout();
         request()->session()->invalidate();
         request()->session()->regenerateToken();
@@ -46,9 +49,9 @@ Route::middleware('auth')->group( function(){
 
 Route::middleware(['auth', 'role:admin'])->group( function(){
 
-     Route::view('/admin/dashboard','admin.dashboard')->name('admin.dashboard');
+Route::view('/admin/dashboard','admin.dashboard')->name('admin.dashboard');
 
-     Route::post('/admin/logout', function () {
+Route::post('/admin/logout', function () {
         Auth::logout();
         request()->session()->invalidate();
         request()->session()->regenerateToken();
