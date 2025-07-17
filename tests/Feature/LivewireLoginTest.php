@@ -31,6 +31,25 @@ class LivewireLoginTest extends TestCase
         $this->assertAuthenticatedAs($user);
     }
 
+       public function test_admin_can_login_and_access_admin_dashboard()
+    {
+
+        $admin = User::factory()->create([
+                    'password' => bcrypt('password123'),
+                    'role' => 'admin', 
+                ]);
+        
+         Livewire::test('auth.login')
+            ->set('email', $admin->email)
+            ->set('password', 'password123')
+            ->call('inputLogin')
+            ->assertRedirect('/admin/dashboard');
+
+         $this->assertAuthenticatedAs($admin);
+    }
+
+
+
     public function test_user_cannot_login_with_wrong_credentials()
     {
          $user = User::factory()->create();
@@ -60,6 +79,8 @@ class LivewireLoginTest extends TestCase
         ->assertSet('cooldown', fn ($value) => $value > 0);
 
     }
+
+   
 
 
 
