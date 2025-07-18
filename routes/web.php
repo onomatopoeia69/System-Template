@@ -45,3 +45,8 @@ Route::post('/logout', function () {
 });
 
 
+
+
+Route::fallback(function () {
+    return redirect()->route('home.index');
+});
