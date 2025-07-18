@@ -7,7 +7,7 @@
     <title>@yield('title', 'Shoppee')</title>
     <link rel="icon" href="">
 
-    @yield('script')
+    @yield('head-script')
 
 </head>
 
@@ -18,6 +18,8 @@
     @yield('content')
 
     @include('partials.guest.footer-guest')
+
+     @yield('body-script')
 
 </body>
 
