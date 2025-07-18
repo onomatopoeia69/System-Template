@@ -3,8 +3,10 @@
 use App\Http\Controllers\Auth\FacebookAuthController;
 use App\Http\Controllers\Auth\GoogleAuthController;
 use App\Http\Controllers\ProductController;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,10 +32,29 @@ Route::get('/auth/google/callback', [GoogleAuthController::class, 'callback'])->
 Route::get('/auth/facebook',[FacebookAuthController::class,'redirect'])->name('facebook.redirect');
 Route::get('/auth/facebook/callback',[FacebookAuthController::class,'callback'])->name('facebook.callback');
 
+
+
 });
 
 
 Route::middleware('auth')->group( function(){
+
+
+
+Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+    $request->fulfill();
+
+    return redirect('/login'); 
+})->middleware(['signed'])->name('verification.verify');
+
+
+Route::post('/email/verification-notification', function (Request $request) {
+    $request->user()->sendEmailVerificationNotification();
+
+    return back()->with('message', 'Verification link sent!');
+
+})->middleware(['throttle:6,1'])->name('verification.send');
+
 
 Route::view('/dashboard','users.dashboard')->name('users.dashboard');
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use Laravel\Socialite\Facades\Socialite;
@@ -44,6 +45,7 @@ class FacebookAuthController extends Controller
             ], [
                 'name' => $user->name,
                 'password' => bcrypt(Str::random(16)),
+                'email_verified_at' => Carbon::now(),
             ]);   
             
             Auth::login($newUser);

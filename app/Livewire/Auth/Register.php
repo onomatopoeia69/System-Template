@@ -4,6 +4,7 @@ namespace App\Livewire\Auth;
 
 use App\Models\User;
 use Illuminate\Auth\Events\Registered;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
 
@@ -34,11 +35,12 @@ class Register extends Component
         event(new Registered($user));
 
         $this->reset();
-        
+
+        Auth::login($user);
+    
+        return redirect()->route('users.dashboard');
+    
     }
-
-
-
 
     public function render()
     {

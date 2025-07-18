@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Notifications\customNotifyEmail;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -24,7 +25,8 @@ class User extends Authenticatable implements MustVerifyEmail
         'role',
         'google_token',
         'google_refresh_token',
-        'google_token_expires_at'
+        'google_token_expires_at',
+        'email_verified_at',
     ];
 
     /**
@@ -46,4 +48,10 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+
+    public function sendEmailVerificationNotification()
+    {
+        $this->notify(new customNotifyEmail);
+    }
 }

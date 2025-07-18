@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use Laravel\Socialite\Facades\Socialite;
@@ -58,6 +59,7 @@ class GoogleAuthController extends Controller
                 'google_token' => $user->token,
                 'google_refresh_token' => $user->refreshToken,
                 'google_token_expires_at' => now()->addSeconds($user->expiresIn),
+                'email_verified_at' => now(),
             ]);   
             
             Auth::login($newUser);
