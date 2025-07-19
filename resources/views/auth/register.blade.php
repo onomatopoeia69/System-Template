@@ -17,20 +17,7 @@
 
             {{-- livewire auth login component view. see.. views/livewire/auth/register :) --}}
             <livewire:auth.register></livewire:auth.register>
-            
-
-
-            <div class="text-center mb-3">
-              <span class="text-muted">or</span>
-            </div>
-            <div class="mb-3">
-              <a href="/auth/google/redirect" class="btn btn-outline-danger w-100 mb-2">
-                <i class="bi bi-google"></i> Sign up with Google
-              </a>
-              <a href="/auth/facebook/redirect" class="btn btn-outline-primary w-100">
-                <i class="bi bi-facebook"></i> Sign up with Facebook
-              </a>
-            </div>
+          
             <div class="mt-3 text-center">
               <small>Already have an account? <a href="/login" class="text-primary">Login here</a></small>
             </div>

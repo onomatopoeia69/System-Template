@@ -8,7 +8,8 @@
 </head>
 <body>
     
-    <p>{{Auth::user()->name}}</p>
+    <p>{{Auth::user()->first_name}} {{Auth::user()->last_name}}</p>
+
 
     <form method="POST" action="{{ route('users.logout') }}">
     @csrf
