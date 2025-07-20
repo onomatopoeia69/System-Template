@@ -19,7 +19,7 @@ class Register extends Component
     public $phone='';
     #[Validate('required|email|unique:users,email')]
     public $email='';
-    #[Validate('required')]
+    #[Validate('required|string|min:8')]
     public $password = '';
     #[Validate('required|same:password')]
     public $confirmPass = '';
@@ -42,6 +42,8 @@ class Register extends Component
 
         $this->reset();
 
+        $this->resetErrorBag();
+
         Auth::login($user);
     
         return redirect()->route('users.dashboard');
@@ -49,7 +51,7 @@ class Register extends Component
         }catch(\Exception $e){
 
             
-
+            
         }
     }
 

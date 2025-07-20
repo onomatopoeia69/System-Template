@@ -55,6 +55,7 @@ Route::post('/email/verification-notification', function (Request $request) {
 
 Route::view('/dashboard','users.dashboard')->name('users.dashboard');
 
+
 Route::post('/logout', function () {
         Auth::logout();
         request()->session()->invalidate();

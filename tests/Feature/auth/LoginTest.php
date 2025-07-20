@@ -1,16 +1,17 @@
 <?php
 
-namespace Tests\Feature;
+namespace Tests\Feature\auth;
 
 use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Livewire\Livewire;
 use Tests\TestCase;
 
-class LivewireLoginTest extends TestCase
+class LoginTest extends TestCase
 {
-     use DatabaseTransactions;
+    use DatabaseTransactions;
       
     /**
      * A basic feature test example.
@@ -81,8 +82,4 @@ class LivewireLoginTest extends TestCase
     }
 
    
-
-
-
-
 }

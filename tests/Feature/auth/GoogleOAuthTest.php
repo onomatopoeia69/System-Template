@@ -1,8 +1,10 @@
 <?php
 
-namespace Tests\Feature;
+namespace Tests\Feature\auth;
 
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
 use Mockery;
 use Illuminate\Support\Str;
 use Laravel\Socialite\Facades\Socialite;
@@ -11,14 +13,11 @@ use Tests\TestCase;
 
 class GoogleOAuthTest extends TestCase
 {
-
-    use DatabaseTransactions;
-    
+     use DatabaseTransactions;
     /**
      * A basic feature test example.
      */
-
-    /** @test */
+     /** @test */
     public function it_creates_a_user_and_logs_in_from_google_oauth_callback()
 {
     
@@ -66,4 +65,43 @@ class GoogleOAuthTest extends TestCase
         $response->assertRedirect(route('auth.login'));
         $response->assertSessionHas('error', 'Google authentication failed.');
     }
+
+    /** @test */
+      public function users_email_automatically_verified_email()
+    {
+
+        $googleUser = Mockery::mock(User::class);
+        $googleUser->shouldReceive('getId')->andReturn('google123');
+        $googleUser->shouldReceive('getName')->andReturn('Test User');
+        $googleUser->shouldReceive('getEmail')->andReturn('test@example.com');
+        $googleUser->shouldReceive('getToken')->andReturn('mock-token');
+        $googleUser->shouldReceive('getRefreshToken')->andReturn('mock-refresh-token');
+        $googleUser->shouldReceive('expiresIn')->andReturn(3600);
+
+    
+        $googleUser->token = 'mock-token';
+        $googleUser->refreshToken = 'mock-refresh-token';
+        $googleUser->expiresIn = 3600;
+        $googleUser->name = 'Test User';
+        $googleUser->email = 'test@example.com';
+
+    
+
+         Socialite::shouldReceive('driver->user')->andReturn($googleUser);
+
+
+         $response = $this->get('/auth/google/callback');
+
+            $user = \App\Models\User::where('email', 'test@example.com')->first();
+
+            $this->assertNotNull($user);
+
+            $this->assertNotNull($user->email_verified_at);
+        
+            $this->assertAuthenticatedAs($user);
+    }
+
+
+
+    
 }

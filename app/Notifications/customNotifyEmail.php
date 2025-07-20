@@ -10,9 +10,11 @@ use Illuminate\Notifications\Notification;
 use Illuminate\Auth\Notifications\VerifyEmail as BaseVerifyEmail;
 use Illuminate\Support\Facades\URL;
 
-class customNotifyEmail extends BaseVerifyEmail
+class customNotifyEmail extends BaseVerifyEmail implements ShouldQueue
 {
     use Queueable;
+
+    public $tries = 5;
 
     /**
      * Create a new notification instance.
