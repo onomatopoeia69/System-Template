@@ -84,7 +84,7 @@
       <div class="text-center mt-4">
             <small class="text-muted">
               Already have an account?
-              <a href="#" class="text-decoration-none" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Login Now</a>
+              <a href="#" class="text-decoration-none" wire:click="clearFields" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Login Now</a>
             </small>
       </div>
     </div>
