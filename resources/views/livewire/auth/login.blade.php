@@ -34,6 +34,12 @@
             @enderror
           </div>
 
+          <div class="mb-3 text-end">
+            <a href="#" class="small text-primary text-decoration-none" wire:click="clearFields" data-bs-toggle="modal" data-bs-target="#forgotPasswordModal" data-bs-dismiss="modal">
+              Forgot Password?
+            </a>
+          </div>
+
           {{-- Login Button or Cooldown --}}
           <div class="mb-3">
             @if ($cooldown > 0)
@@ -66,7 +72,7 @@
           <div class="text-center mt-4">
             <small class="text-muted">
               Don't have an account?
-              <a href="#" class="text-decoration-none" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">Sign up here</a>
+              <a href="#" class="text-decoration-none" wire:click='clearFields' data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">Sign up here</a>
             </small>
           </div>
 
@@ -85,13 +91,14 @@
   </div>
 </div>
 
-
-
-
  {{-- livewire auth register component view. see.. views/livewire/auth/register --}}
 
   <livewire:auth.register />
 
 {{-- first modal trigger for register --}}
-<li><a href="#" class="hover:text-violet-300" data-bs-target="#exampleModalToggle" data-bs-toggle="modal" >Login/Signup</a></li>
+<li><a href="#" class="hover:text-violet-300"  data-bs-target="#exampleModalToggle" data-bs-toggle="modal" >Login/Signup</a></li>
+
+  @include('livewire.auth.forgotpassword')
+
 </div>
+

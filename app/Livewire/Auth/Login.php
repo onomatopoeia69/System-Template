@@ -16,6 +16,9 @@ class Login extends Component
     public $email;
     #[Validate('required')]
     public $password;
+        
+   #[Validate('required|email|exists:users,email,role,!admin', as: 'email')]
+    public $forgotEmail;
 
     public $cooldown = 0;
 
@@ -88,6 +91,14 @@ class Login extends Component
         $this->resetErrorBag(); 
 
     }   
+
+    public function forgotRegister()
+    {
+
+
+        dd($this->forgotEmail);
+
+    }
 
     public function redirectToGoogle()
     {
