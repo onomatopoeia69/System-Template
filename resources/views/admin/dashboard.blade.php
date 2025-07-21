@@ -7,16 +7,12 @@
     <title>Document</title>
 </head>
 <body>
-    
-    <p>{{ Auth::user()->first_name}} {{Auth::user()->last_name}}</p>
 
-
-    <form method="POST" action="{{ route('users.logout') }}">
+<p>test</p>
+    <form method="POST" action="{{ route('admin.logout') }}">
     @csrf
     <button type="submit" class="btn btn-danger">Logout</button>
-</form>  
-
-
+</form>
 
 </body>
 </html>

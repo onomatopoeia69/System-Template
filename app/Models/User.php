@@ -2,13 +2,14 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Notifications\customNotifyEmail;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens, HasFactory, Notifiable;
 
@@ -21,9 +22,11 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role',
         'google_token',
         'google_refresh_token',
-        'google_token_expires_at'
+        'google_token_expires_at',
+        'email_verified_at',
     ];
 
     /**
@@ -45,4 +48,53 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    
+    public function getFirstNameAttribute()
+    {      
+       return explode(' ', $this->name)[0];    
+    }
+
+    public function getLastNameAttribute()
+    {   
+        $arr = explode(' ', $this->name);
+
+        if(count($arr) >= 4){
+
+        return implode(' ', array_slice(explode(' ', $this->name), -2));
+
+        }else{
+
+        return array_slice(explode(' ', $this->name), -1)[0] ?? '';
+        
+        }
+
+    }
+
+    public function getIsEmailVerifiedAttribute(): bool
+    {
+        return !is_null($this->email_verified_at);
+    }
+
+
+    public function getFormattedCreatedAtAttribute(): string
+    {
+        return $this->created_at->format('F d, Y');
+    }
+
+
+    public function sendEmailVerificationNotification()
+    {
+        $this->notify(new customNotifyEmail);
+    }
+
+    public function getIsAdminAttribute(): bool
+    {
+        return $this->role === 'admin';
+    }
+
+    public function getIsUserAttribute(): bool
+    {
+        return $this->role === 'user';
+    }
 }

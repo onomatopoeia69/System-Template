@@ -57,7 +57,17 @@
  {{-- for the body scripts --}}
 @section('body-script')
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.min.js" integrity="sha384-7qAoOXltbVP82dhxHAUje59V5r2YsVfBafyUDxEdApLPmcdhBPg1DKg1ERo0BZlK" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.min.js"></script>
+
+
+ @if(session('login_required'))
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var loginModal = new bootstrap.Modal(document.getElementById('exampleModalToggle'));
+            loginModal.show();
+        });
+    </script>
+@endif
 
 @endsection
 

@@ -2,8 +2,11 @@
 
 use App\Http\Controllers\Auth\FacebookAuthController;
 use App\Http\Controllers\Auth\GoogleAuthController;
+use App\Http\Controllers\ProductController;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,14 +20,13 @@ use Illuminate\Support\Facades\Auth;
 */
 
 
+
 Route::middleware('guest')->group( function(){
 
 Route::view('/shop','home.index')->name('home.index');
 
-Route::view('/login','auth.login')->name('login');
 Route::get('/auth/google', [GoogleAuthController::class, 'redirect'])->name('google.redirect');
 Route::get('/auth/google/callback', [GoogleAuthController::class, 'callback'])->name('google.callback');
-
 
 Route::get('/auth/facebook',[FacebookAuthController::class,'redirect'])->name('facebook.redirect');
 Route::get('/auth/facebook/callback',[FacebookAuthController::class,'callback'])->name('facebook.callback');
@@ -34,13 +36,43 @@ Route::get('/auth/facebook/callback',[FacebookAuthController::class,'callback'])
 
 Route::middleware('auth')->group( function(){
 
+Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+    $request->fulfill();
+    return redirect('/dashboard'); 
+})->middleware(['signed'])->name('verification.verify');
+
+
+Route::post('/email/verification-notification', function (Request $request) {
+    $request->user()->sendEmailVerificationNotification();
+
+    return back()->with('message', 'Verification link sent!');
+
+})->middleware(['throttle:6,1'])->name('verification.send');
+
+
 Route::view('/dashboard','users.dashboard')->name('users.dashboard');
 
-Route::post('/logout', function () {
-    Auth::logout();
-    return redirect('/login');
-})->name('logout'); 
 
+Route::post('/logout', function () {
+        Auth::logout();
+        request()->session()->invalidate();
+        request()->session()->regenerateToken();
+       return redirect()->route('home.index')->with('login_required', true);
+    })->name('users.logout');
+
+});
+
+
+Route::middleware(['auth', 'role:admin'])->group( function(){
+
+Route::view('/admin/dashboard','admin.dashboard')->name('admin.dashboard');
+
+Route::post('/admin/logout', function () {
+        Auth::logout();
+        request()->session()->invalidate();
+        request()->session()->regenerateToken();
+        return redirect()->route('home.index')->with('login_required', true);
+    })->name('admin.logout');
 
 });
 
