@@ -23,7 +23,7 @@
                 <li><a href="#" class="hover:text-violet-300">About</a></li>
                 <li><a href="#" class="hover:text-violet-300">Product Cart</a></li>
                 <li><a href="#" class="hover:text-violet-300">Orders</a></li>
-                <li><a href="#" class="hover:text-violet-300">Login</a></li>
+                <li><a href="#" class="hover:text-violet-300">Sign Up</a></li>
             </ul>
         </div>
 

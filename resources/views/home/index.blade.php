@@ -34,8 +34,6 @@
         </div>
     </section>
 
-    </div>
-
     <section>
         <h1>Welcome to Our Landing Page</h1>
         <p>Test Landing Page</p>
