@@ -62,7 +62,7 @@ class FacebookOAuthTest extends TestCase
 
         $response = $this->get('/auth/facebook/callback');
 
-        $response->assertRedirect(route('auth.login'));
+        $response->assertRedirect(route('home.index'));
         $response->assertSessionHas('error', 'Facebook authentication failed.');
     }
 

@@ -40,7 +40,6 @@ class Login extends Component
 
         RateLimiter::clear($this->throttleKey()); 
         $this->reset();
-        $this->resetErrorBag(); 
 
         $user = Auth::user();
 
@@ -82,6 +81,13 @@ class Login extends Component
         }
 
     }
+
+    public function clearFields(){
+
+        $this->reset();
+        $this->resetErrorBag(); 
+
+    }   
 
     public function redirectToGoogle()
     {

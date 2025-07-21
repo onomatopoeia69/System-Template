@@ -17,11 +17,11 @@ class Register extends Component
     public $lname='';
     #[Validate('required|numeric')]
     public $phone='';
-    #[Validate('required|email|unique:users,email')]
-    public $email='';
-    #[Validate('required|string|min:8')]
-    public $password = '';
-    #[Validate('required|same:password')]
+    #[Validate('required|email|unique:users,email', as: 'email')]
+    public $regEmail='';
+    #[Validate('required|string|min:8' , as: 'password')]
+    public $regPassword = '';
+    #[Validate('required|same:regPassword', as: 'confirmation password')]
     public $confirmPass = '';
 
 
@@ -34,8 +34,8 @@ class Register extends Component
 
         $user = User::create([
             'name' => Str::title($this->fname).' '.Str::title($this->lname),
-            'email' => $this->email,
-            'password' => bcrypt($this->password),
+            'email' => $this->regEmail,
+            'password' => bcrypt($this->regPassword),
         ]);
 
         event(new Registered($user));
@@ -53,6 +53,12 @@ class Register extends Component
             
             
         }
+    }
+
+    public function clearFields()
+    {
+        $this->reset();
+        $this->resetErrorBag(); 
     }
 
      public function redirectToGoogle()

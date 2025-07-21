@@ -23,16 +23,16 @@ use Illuminate\Http\Request;
 
 Route::middleware('guest')->group( function(){
 
-Route::view('/login','auth.login')->name('auth.login');
+// Route::view('/login','auth.login')->name('auth.login');
 Route::view('/register','auth.register')->name('auth.register');
+
+Route::view('/shop','home.index')->name('home.index');
 
 Route::get('/auth/google', [GoogleAuthController::class, 'redirect'])->name('google.redirect');
 Route::get('/auth/google/callback', [GoogleAuthController::class, 'callback'])->name('google.callback');
 
 Route::get('/auth/facebook',[FacebookAuthController::class,'redirect'])->name('facebook.redirect');
 Route::get('/auth/facebook/callback',[FacebookAuthController::class,'callback'])->name('facebook.callback');
-
-
 
 });
 
@@ -60,7 +60,7 @@ Route::post('/logout', function () {
         Auth::logout();
         request()->session()->invalidate();
         request()->session()->regenerateToken();
-        return redirect('/login');
+       return redirect()->route('home.index')->with('login_required', true);
     })->name('users.logout');
 
 });
@@ -74,9 +74,14 @@ Route::post('/admin/logout', function () {
         Auth::logout();
         request()->session()->invalidate();
         request()->session()->regenerateToken();
-        return redirect('/login');
+        return redirect()->route('home.index')->with('login_required', true);
     })->name('admin.logout');
 
 });
 
 
+
+
+Route::fallback(function () {
+    return redirect()->route('home.index');
+});
