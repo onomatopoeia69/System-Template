@@ -23,9 +23,6 @@ use Illuminate\Http\Request;
 
 Route::middleware('guest')->group( function(){
 
-// Route::view('/login','auth.login')->name('auth.login');
-Route::view('/register','auth.register')->name('auth.register');
-
 Route::view('/shop','home.index')->name('home.index');
 
 Route::get('/auth/google', [GoogleAuthController::class, 'redirect'])->name('google.redirect');

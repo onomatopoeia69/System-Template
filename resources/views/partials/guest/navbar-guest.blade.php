@@ -23,6 +23,8 @@
                 <li><a href="#" class="hover:text-violet-300">About</a></li>
                 <li><a href="#" class="hover:text-violet-300">Product Cart</a></li>
                 <li><a href="#" class="hover:text-violet-300">Orders</a></li>
+
+             {{-- livewire auth login component view. see.. views/livewire/auth/login --}}
                 <livewire:auth.login />
             </ul>
         </div>

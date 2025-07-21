@@ -86,7 +86,9 @@
 </div>
 
 
-{{-- second modal for register --}}
+
+
+ {{-- livewire auth register component view. see.. views/livewire/auth/register --}}
 
   <livewire:auth.register />
 
