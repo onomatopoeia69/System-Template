@@ -45,12 +45,15 @@ class Register extends Component
         $this->resetErrorBag();
 
         Auth::login($user);
+
+        session()->flash('welcome', 'Welcome! ');
+        session()->flash( 'time', now()->diffForHumans());
     
         return redirect()->route('users.dashboard');
 
         }catch(\Exception $e){
 
-            
+
             
         }
     }

@@ -97,4 +97,12 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->role === 'user';
     }
+
+    public function getAssignedRoleAttribute()
+    {
+
+        return ucfirst($this->role);
+
+    }
+
 }

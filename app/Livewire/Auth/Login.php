@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Auth;
 
+use Livewire\Attributes\On;
 use Livewire\Attributes\Validate;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\RateLimiter;
@@ -46,6 +47,10 @@ class Login extends Component
 
         $user = Auth::user();
 
+
+        session()->flash('welcome', 'Welcome back!');
+        session()->flash( 'time', now()->diffForHumans());
+
         if ($user->role === 'admin') {
             return redirect()->route('admin.dashboard');
         }
@@ -60,11 +65,22 @@ class Login extends Component
     protected function rateLimit()
     {
         if (RateLimiter::tooManyAttempts($this->throttleKey(), 5)) {
-
             $this->cooldown = RateLimiter::availableIn($this->throttleKey());
+            $this->dispatch('clearAfterError');
             $this->reset('email','password');
+            
         }
     }
+
+
+    #[On('clearAfterError')]
+    public function updatedEmail()
+    {
+
+        $this->resetErrorBag();
+
+    }
+
 
     protected function throttleKey()
     {
