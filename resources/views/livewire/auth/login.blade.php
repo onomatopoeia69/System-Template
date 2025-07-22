@@ -1,7 +1,6 @@
 <div>
 
   {{-- first modal for login --}}
-
 <div class="modal fade" id="exampleModalToggle" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false" wire:ignore.self>
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content"> 
@@ -14,12 +13,12 @@
 
       {{-- Body --}}
       <div class="modal-body">
-        <form wire:submit.prevent="inputLogin" class="needs-validation" novalidate>
+        <form wire:submit="inputLogin" class="needs-validation" novalidate>
           
           {{-- Email --}}
           <div class="mb-3">
             <label for="loginEmail" class="form-label">Email Address</label>
-            <input type="email" id="loginEmail" wire:model="email" class="form-control @error('email') is-invalid @enderror" placeholder="you@example.com" required>
+            <input type="email" id="loginEmail" wire:model.live="email" class="form-control @error('email') is-invalid @enderror" placeholder="you@example.com" required>
             @error('email')
               <div class="invalid-feedback d-block">{{ $message }}</div>
             @enderror
@@ -28,7 +27,7 @@
           {{-- Password --}}
           <div class="mb-3">
             <label for="loginPassword" class="form-label">Password</label>
-            <input type="password" id="loginPassword" wire:model="password" class="form-control @error('password') is-invalid @enderror" placeholder="••••••••" required>
+            <input type="password" id="loginPassword" wire:model="password" autocomplete="true" class="form-control @error('password') is-invalid @enderror" placeholder="••••••••" required>
             @error('password')
               <div class="invalid-feedback d-block">{{ $message }}</div>
             @enderror

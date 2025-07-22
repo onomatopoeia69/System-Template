@@ -52,7 +52,7 @@
         <div class="mb-3">
             <input type="password"
                 class="form-control @if($errors->has('confirmPass') || $errors->has('regPassword')) is-invalid   @elseif (!empty($confirmPass)) is-valid  @endif"
-                name="password" placeholder="Password" wire:model.live='regPassword' required>
+                name="password" placeholder="Password" autocomplete="true"  wire:model.live='regPassword' required>
         </div>
         @error('regPassword')
             <span class="text-danger">{{ $message }}</span>
@@ -60,7 +60,7 @@
         <div class="mb-3">
             <input type="password"
                 class="form-control @if($errors->has('confirmPass') || $errors->has('regPassword')) is-invalid   @elseif (!empty($confirmPass)) is-valid  @endif"
-                name="password" placeholder="Confirm Password" wire:model.live='confirmPass' required>
+                name="password" placeholder="Confirm Password" autocomplete="true" wire:model.live='confirmPass' required>
         </div>
         @error('confirmPass')
             <span class="text-danger">{{ $message }}</span>

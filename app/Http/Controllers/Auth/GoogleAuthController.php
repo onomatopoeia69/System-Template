@@ -46,7 +46,10 @@ class GoogleAuthController extends Controller
             
             Auth::login($existingUser);
 
-             return redirect('/dashboard');
+             return redirect('/dashboard')->with([
+                'welcome' => 'Welcome Back !,',
+                'time' => now()->diffForHumans()
+            ]);
 
         
         }else{ 
@@ -64,7 +67,10 @@ class GoogleAuthController extends Controller
             
             Auth::login($newUser);
 
-            return redirect('/dashboard');
+             return redirect('/dashboard')->with([
+                'welcome' => 'Welcome!,',
+                'time' => now()->diffForHumans()
+            ]);
         }
 
        

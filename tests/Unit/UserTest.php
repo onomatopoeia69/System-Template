@@ -135,4 +135,18 @@ class UserTest extends TestCase
         $this->assertTrue($user->is_user);
     }
 
+      /** @test */
+    public function it_display_what_role_the_user_is_in_upperCamel()
+    {
+
+         $user = User::create([
+            'name' => 'John Philip Cruz',
+            'email' => 'juandelacruz@gmail.com',
+            'password' => 'secret', 
+            'role' => 'user',
+        ]);
+
+        $this->assertEquals('User',$user->assigned_role);
+    }
+
 }
