@@ -50,15 +50,18 @@ class Login extends Component
 
         session()->flash('welcome', 'Welcome back!');
         session()->flash( 'time', now()->diffForHumans());
+        
 
-        if ($user->role === 'admin') {
-            return redirect()->route('admin.dashboard');
-        }
-        if ($user->role === 'staff') {
-            return redirect()->route('staff.dashboard');
-        }else{
-        return redirect()->route('users.dashboard');
-        }
+        switch ($user->role) {
+            case 'admin':
+                return redirect()->route('admin.dashboard');
+            case 'staff':
+                return redirect()->route('staff.dashboard');
+            default:
+               session()->flash( 'emailVerified', Auth::user()->is_email_verified);
+                return redirect()->route('users.dashboard');
+            }
+
     }
 
     
