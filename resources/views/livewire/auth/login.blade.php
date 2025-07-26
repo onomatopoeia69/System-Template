@@ -13,21 +13,22 @@
 
       {{-- Body --}}
       <div class="modal-body">
+
         <form wire:submit="inputLogin" class="needs-validation" novalidate>
           
           {{-- Email --}}
-          <div class="mb-3">
-            <label for="loginEmail" class="form-label">Email Address</label>
-            <input type="email" id="loginEmail" wire:model.live="email" class="form-control @error('email') is-invalid @enderror" placeholder="you@example.com" required>
+          <div class="form-floating mb-3">
+            <input type="email" id="floatingInput" wire:model.live="email" class="form-control @error('email') is-invalid @enderror" placeholder="you@example.com" required>
+            <label for="floatingInput">Email address</label>
             @error('email')
               <div class="invalid-feedback d-block">{{ $message }}</div>
             @enderror
           </div>
 
           {{-- Password --}}
-          <div class="mb-3">
-            <label for="loginPassword" class="form-label">Password</label>
-            <input type="password" id="loginPassword" wire:model="password" autocomplete="true" class="form-control @error('password') is-invalid @enderror" placeholder="••••••••" required>
+          <div class="form-floating mb-3">
+            <input type="password" id="floatingPassword" id="loginPassword" wire:model="password" autocomplete="true" class="form-control @error('password') is-invalid @enderror" placeholder="••••••••" required>
+            <label for="floatingPassword">Password</label>
             @error('password')
               <div class="invalid-feedback d-block">{{ $message }}</div>
             @enderror
@@ -46,9 +47,12 @@
                 Please wait {{ $cooldown }}s
               </button>
             @else
-              <button type="submit" class="btn btn-primary w-100">
-                Login
-              </button>
+              <button type="submit" wire:loading.attr="disabled" class="btn btn-primary w-100">
+                 <span wire:loading.remove wire:target="inputLogin">Login</span>
+               <div wire:loading wire:target="inputLogin" class="spinner-border spinner-border-sm" role="status">
+              </div>
+             </button>
+              
             @endif
           </div>
 
