@@ -272,7 +272,7 @@
     <x-toast color="danger" id="emailToast" text="white" time="{{ session('time') }}">
         Please verify your email.
         <div class="mt-2 pt-2 border-top">
-            <x-buttons color="warning" size="sm">Take action</x-buttons>
+            <x-buttons color="warning" size="sm" href="{{route('users.verify')}}">Take action</x-buttons>
             <x-buttons color="secondary" size="sm">Close</x-buttons>
         </div>
     </x-toast>
@@ -315,6 +315,24 @@
       dropdownBtn.classList.remove('font-bold', 'text-violet-700');
     }
   });
+
+  document.addEventListener('click',function(s){
+
+    if(notificationBtn.contains(s.target)){
+
+      notificationMenu.classList.toggle('hidden');
+      notificationBtn.classList.toggle('font-bold');
+      notificationBtn.classList.toggle('text-violet-700');
+
+    }else if(!notificationMenu.contains(s.target)){
+
+      notificationMenu.classList.add('hidden');
+      notificationBtn.classList.remove('font-bold', 'text-violet-700');
+    }
+
+  });
+
+
 </script>
 
 @endsection

@@ -12,12 +12,13 @@ class buttons extends Component
      * Create a new component instance.
      */
 
-    public $size,$color;
+    public $size,$color,$href;
 
-    public function __construct($color,$size)
+    public function __construct($color,$size,$href=null)
     {
         $this->color = $color;
         $this->size = $size;
+        $this->href =$href;
     }
 
     /**
