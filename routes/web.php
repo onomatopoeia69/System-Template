@@ -50,11 +50,9 @@ Route::post('/email/verification-notification', function (Request $request) {
 })->middleware(['throttle:6,1'])->name('verification.send');
 
 
-
-
 Route::view('/dashboard','users.dashboard')->name('users.dashboard');
 
-Route::view('/verify','users.auth.verify-email')->name('users.verify');
+Route::view('/verify','users.auth.verify-email')->middleware(['unverified'])->name('users.verify');
 
 Route::post('/logout', function () {
         Auth::logout();
