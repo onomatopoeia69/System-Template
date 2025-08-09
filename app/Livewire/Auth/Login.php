@@ -59,7 +59,7 @@ class Login extends Component
                 return redirect()->route('staff.dashboard');
             default:
                session()->flash( 'emailVerified', Auth::user()->is_email_verified);
-                return redirect()->route('users.dashboard');
+                return redirect()->intended()->route('users.dashboard');
             }
 
     }
@@ -122,6 +122,7 @@ class Login extends Component
     public function redirectToGoogle()
     {
         return redirect()->route('google.redirect');
+        
     }
 
     public function redirectToFacebook()

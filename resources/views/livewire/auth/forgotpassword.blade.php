@@ -1,5 +1,5 @@
 {{-- modal for forgot password --}}
-
+@teleport('body')
  <div class="modal fade" id="forgotPasswordModal" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="exampleModalToggleLabel2" tabindex="-1" wire:ignore.self>
   <div class="modal-dialog modal-dialog-scrollable">
     <div class="modal-content">
@@ -44,3 +44,4 @@
     </div>
   </div>
 </div>
+@endteleport

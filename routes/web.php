@@ -24,6 +24,7 @@ use Illuminate\Http\Request;
 Route::middleware('guest')->group( function(){
 
 Route::view('/shop','home.index')->name('home.index');
+Route::view('/shop2','home.index2')->name('home2.index');
 
 Route::get('/auth/google', [GoogleAuthController::class, 'redirect'])->name('google.redirect');
 Route::get('/auth/google/callback', [GoogleAuthController::class, 'callback'])->name('google.callback');

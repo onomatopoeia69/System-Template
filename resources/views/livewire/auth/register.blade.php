@@ -1,4 +1,7 @@
 <div>
+
+
+  @teleport('body')
   
   <div class="modal fade" id="exampleModalToggle2" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="exampleModalToggleLabel2" tabindex="-1" wire:ignore.self>
   <div class="modal-dialog modal-dialog-scrollable">
@@ -96,7 +99,7 @@
   </div>
 </div>
 
-
+@endteleport
   
 
 </div>

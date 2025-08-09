@@ -1,5 +1,10 @@
 <div>
 
+  {{-- first modal trigger for register --}}
+<li><a href="#" class="hover:text-violet-300"  data-bs-target="#exampleModalToggle" data-bs-toggle="modal" >Login/Signup</a></li>
+
+
+  @teleport('body')
   {{-- first modal for login --}}
 <div class="modal fade" id="exampleModalToggle" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false" wire:ignore.self>
   <div class="modal-dialog modal-dialog-centered">
@@ -94,14 +99,17 @@
   </div>
 </div>
 
+@endteleport
+
+
  {{-- livewire auth register component view. see.. views/livewire/auth/register --}}
 
   <livewire:auth.register />
 
-{{-- first modal trigger for register --}}
-<li><a href="#" class="hover:text-violet-300"  data-bs-target="#exampleModalToggle" data-bs-toggle="modal" >Login/Signup</a></li>
 
   @include('livewire.auth.forgotpassword')
+
+
 
 </div>
 
