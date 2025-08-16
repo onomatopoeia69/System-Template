@@ -1,6 +1,6 @@
     {{-- navbar --}}
-    <div class="w-full h-screen bg-[url('/img/bg-violet.png')] bg-cover bg-center">
-    <nav class="p-3">
+<div class="w-full h-screen bg-[url('/img/bg-violet.png')] bg-cover bg-center">
+    <nav class="p-3 sticky top-0 z-50">
         <div class="container mx-auto flex items-center justify-between">
             
             {{-- logo --}}
@@ -19,23 +19,21 @@
             {{-- nav bar --}}
             <ul id="nav-links" class="hidden md:flex space-x-8 text-white font-bold text-base">
                 <li><a href="#" class="hover:text-violet-300">Home</a></li>
-                <li><a href="#" class="hover:text-violet-300">Contact Us</a></li>
+                <li><a href="#" class="hover:text-violet-300">Shop</a></li>
                 <li><a href="#" class="hover:text-violet-300">About</a></li>
-                <li><a href="#" class="hover:text-violet-300">Product Cart</a></li>
-                <li><a href="#" class="hover:text-violet-300">Orders</a></li>
+                <li><a href="#" class="hover:text-violet-300">Blog</a></li>
+                <li><a href="#" class="hover:text-violet-300">Contact</a></li>
+                <li>
+                    <a href="#" class="flex items-center text-white hover:text-violet-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14l1 9H4l1-9zM9 21h6a2 2 0 002-2H7a2 2 0 002 2z" />
+                        </svg>
+                    </a>
+                </li>
 
-             {{-- livewire auth login component view. see.. views/livewire/auth/login --}}
+
+                {{-- livewire auth login component --}}
                 <livewire:auth.login />
             </ul>
         </div>
-
-        {{-- mobile menu --}}
-        {{-- <ul id="mobile-menu" class="md:hidden hidden flex-col mt-4 space-y-4 text-white font-semibold text-lg px-4">
-            <li><a href="#" class="hover:text-violet-300 block">Home</a></li>
-            <li><a href="#" class="hover:text-violet-300 block">Contact Us</a></li>
-            <li><a href="#" class="hover:text-violet-300 block">About</a></li>
-            <li><a href="#" class="hover:text-violet-300 block">Product Cart</a></li>
-            <li><a href="#" class="hover:text-violet-300 block">Orders</a></li>
-            <li><a href="#" class="hover:text-violet-300 block">Login</a></li>
-        </ul> --}}
     </nav>
