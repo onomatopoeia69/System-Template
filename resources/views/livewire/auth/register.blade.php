@@ -1,11 +1,11 @@
 <div>
 
 
-  @teleport('body')
+  @teleport('body ')
   
   <div class="modal fade" id="exampleModalToggle2" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="exampleModalToggleLabel2" tabindex="-1" wire:ignore.self>
   <div class="modal-dialog modal-dialog-scrollable">
-    <div class="modal-content">
+    <div class="modal-content bg-gray-100">
 
      {{-- Header --}}
       <div class="modal-header border-0">
@@ -68,11 +68,11 @@
         @error('confirmPass')
             <span class="text-danger">{{ $message }}</span>
         @enderror
-        <button type="submit" class="btn btn-primary w-100">Register</button>
+        <button type="submit" class="btn btn-warning text-black w-100 fw-medium">Register</button>
     </form>
     
      <div class="text-center mb-3">
-              <span class="text-muted">or</span>
+              <span class="text-black fw-semibold">or</span>
             </div>
             <div class="mb-3">
               <a wire:click="redirectToGoogle" class="btn btn-outline-danger w-100 mb-2">
@@ -85,9 +85,9 @@
 
      {{-- second modal trigger back to login --}}
       <div class="text-center mt-4">
-            <small class="text-muted">
+            <small class="text-black fw-medium">
               Already have an account?
-              <a href="#" class="text-decoration-none" wire:click="clearFields" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Login Now</a>
+              <a href="#" class="text-decoration-underline text-primary" wire:click="clearFields" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Login Now</a>
             </small>
       </div>
     </div>

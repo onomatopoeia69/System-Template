@@ -1,12 +1,11 @@
     {{-- navbar --}}
-    <div class="w-full h-screen bg-[url('/img/bg-violet.png')] bg-cover bg-center">
-    <nav class="p-3">
+    <nav class="p-3 bg-gray-900">
         <div class="container mx-auto flex items-center justify-between">
             
             {{-- logo --}}
             <div class="flex items-center space-x-4">
-                <img src="/img/logo.png" alt="Logo" class="h-12 w-12">
-                <h1 class="text-2xl sm:text-3xl font-bold text-white">Ordering and Billing</h1>
+                <img src="/img/logo.png" alt="Logo" class="h-12 w-12 rounded">
+                <h1 class="text-2xl sm:text-3xl font-bold text-yellow-300">Pandoras</h1>
             </div>
 
             {{-- Mobile menu button --}}
@@ -18,15 +17,16 @@
 
             {{-- nav bar --}}
             <ul id="nav-links" class="hidden md:flex space-x-8 text-white font-bold text-base">
-                <li><a href="#" class="hover:text-violet-300">Home</a></li>
-                <li><a href="#" class="hover:text-violet-300">Contact Us</a></li>
-                <li><a href="#" class="hover:text-violet-300">About</a></li>
-                <li><a href="#" class="hover:text-violet-300">Product Cart</a></li>
-                <li><a href="#" class="hover:text-violet-300">Orders</a></li>
+
+                <li><a href="#products" class="hover:text-yellow-300">Products</a></li>
+                <li><a href="#" class="hover:text-yellow-300">Sale</a></li>
+                 <li><a href="#" class="hover:text-yellow-300">About</a></li>
+                <li><a href="#" class="hover:text-yellow-300">Contact Us</a></li>
+               
+             
 
              {{-- livewire auth login component view. see.. views/livewire/auth/login --}}
-             
-                <livewire:auth.login />
+                <livewire:auth.login /> 
             
             </ul>
         </div>
@@ -41,3 +41,4 @@
             <li><a href="#" class="hover:text-violet-300 block">Login</a></li>
         </ul> --}}
     </nav>
+    

@@ -1,19 +1,17 @@
 <div>
 
   {{-- first modal trigger for register --}}
-<li><a href="#" class="hover:text-violet-300"  data-bs-target="#exampleModalToggle" data-bs-toggle="modal" >Login/Signup</a></li>
+<li><a href="#" class="hover:text-yellow-300"  data-bs-target="#exampleModalToggle" data-bs-toggle="modal" >Login/Signup</a></li>
 
-
-  @teleport('body')
   {{-- first modal for login --}}
 <div class="modal fade" id="exampleModalToggle" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false" wire:ignore.self>
   <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content"> 
+    <div class="modal-content bg-gray-100"> 
 
       {{-- Header --}}
       <div class="modal-header border-0">
-        <h5 class="modal-title fw-semibold" id="loginModalLabel">Login to Your Account</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" wire:click='clearFields'></button>
+        <h5 class="modal-title fw-semibold text-black" id="loginModalLabel">Login to Your Account</h5>
+        <button type="button" class="btn-close bg-white" data-bs-dismiss="modal" aria-label="Close" wire:click='clearFields'></button>
       </div>
 
       {{-- Body --}}
@@ -31,16 +29,32 @@
           </div>
 
           {{-- Password --}}
-          <div class="form-floating mb-3">
-            <input type="password" id="floatingPassword" id="loginPassword" wire:model="password" autocomplete="true" class="form-control @error('password') is-invalid @enderror" placeholder="••••••••" required>
-            <label for="floatingPassword">Password</label>
-            @error('password')
-              <div class="invalid-feedback d-block">{{ $message }}</div>
-            @enderror
-          </div>
+         <div class="form-floating position-relative mb-3">
+          <input 
+            type="password" 
+            id="loginPassword" 
+            wire:model="password" 
+            class="form-control pe-5 @error('password') is-invalid @enderror" 
+            placeholder="••••••••" 
+            required
+          >
+          <label for="loginPassword">Password</label>
+
+          <!-- Eye icon -->
+          <i 
+            class="bi bi-eye-fill position-absolute top-50 end-0 translate-middle-y me-3 text-secondary d-none" 
+            id="togglePassword" 
+            style="cursor: pointer;">
+          </i>
+
+          @error('password')
+            <div class="invalid-feedback d-block">{{ $message }}</div>
+          @enderror
+        </div>
+
 
           <div class="mb-3 text-end">
-            <a href="#" class="small text-primary text-decoration-none" wire:click="clearFields" data-bs-toggle="modal" data-bs-target="#forgotPasswordModal" data-bs-dismiss="modal">
+            <a href="#" class="small text-primary text-decoration-none text-black fw-medium" wire:click="clearFields" data-bs-toggle="modal" data-bs-target="#forgotPasswordModal" data-bs-dismiss="modal">
               Forgot Password?
             </a>
           </div>
@@ -52,18 +66,17 @@
                 Please wait {{ $cooldown }}s
               </button>
             @else
-              <button type="submit" wire:loading.attr="disabled" class="btn btn-primary w-100">
+              <button type="submit" wire:loading.attr="disabled" class="btn btn-warning fw-medium  w-100">
                  <span wire:loading.remove wire:target="inputLogin">Login</span>
                <div wire:loading wire:target="inputLogin" class="spinner-border spinner-border-sm" role="status">
               </div>
              </button>
-              
             @endif
           </div>
 
           {{-- Or Divider --}}
           <div class="text-center my-3">
-            <span class="text-muted">OR</span>
+            <span class="fw-medium text-black">or</span>
           </div>
 
           {{-- Social Logins --}}
@@ -78,9 +91,9 @@
 
           {{-- Register Switch --}}
           <div class="text-center mt-4">
-            <small class="text-muted">
+            <small class="text-black fw-medium">
               Don't have an account?
-              <a href="#" class="text-decoration-none" wire:click='clearFields' data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">Sign up here</a>
+              <a href="#" class="text-decoration-underline text-primary" wire:click='clearFields' data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">Register here</a>
             </small>
           </div>
 
@@ -99,7 +112,6 @@
   </div>
 </div>
 
-@endteleport
 
 
  {{-- livewire auth register component view. see.. views/livewire/auth/register --}}
@@ -108,8 +120,6 @@
 
 
   @include('livewire.auth.forgotpassword')
-
-
 
 </div>
 
