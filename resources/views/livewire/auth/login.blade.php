@@ -17,7 +17,7 @@
       {{-- Body --}}
       <div class="modal-body">
 
-        <form wire:submit="inputLogin" class="needs-validation" novalidate>
+        <form id="loginForm" wire:submit="inputLogin" class="needs-validation" novalidate>
           
           {{-- Email --}}
           <div class="form-floating mb-3">

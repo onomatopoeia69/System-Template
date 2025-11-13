@@ -18,6 +18,8 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
 
 
 
@@ -47,14 +49,16 @@
         </section>
 
 
-  <section id="products" class="bg-gray-100 p-10" style="min-height:100vh;">
+  <section id="products"  class="bg-gray-100 p-10" style="min-height:100vh;">
 
-   <span class="d-block fs-2 text-center text-black fw-bold pb-5">
+   <span class="d-block fs-2 text-center text-black fw-bold pb-5" data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1500" >
    <div class="flex-grow-1 border-top border-black"></div>POPULAR PRODUCTS
    <div class="flex-grow-1 border-top border-black"></div>
    </span>
 
-    <div class="swiper mySwiper"  style="width: 100%; height: 30rem;">
+
+
+    <div class="swiper mySwiper" data-aos="fade-down"  style="width: 100%; height: 30rem;">
 
     <div class="swiper-wrapper">
 
@@ -154,15 +158,24 @@
 
       <section class="bg-gray-200 p-10" style="min-height: 90vh;">
 
-           <span class="d-block fs-2 text-center text-black fw-bold pb-5">
+           <span class="d-block fs-2 text-center text-black fw-bold pb-5" data-aos="fade-right" data-aos-easing="linear" data-aos-duration="1500" >
           <div class="flex-grow-1 border-top border-black"></div>CATEGORIES
           <div class="flex-grow-1 border-top border-black"></div>
           </span>
 
 
+          <div class="d-flex"> 
+
+            <div class="shadow" style="width: 20%; height: 10 rem">
+
+            </div>
+
+          </div>
+
+
       </section>
 
-        <section class="bg-gray-900 p-10" style="min-height: 60vh;">
+        <section class="bg-gray-900 p-10" style="min-height: 60vh;" data-aos="fade-right" data-aos-easing="linear" data-aos-duration="1500" >
 
            <span class="d-block fs-2 text-center text-yellow-300 fw-bold pb-5">
           <div class="flex-grow-1 border-top border-yellow-300"></div>
@@ -174,11 +187,12 @@
       </section>
 
 
-
-  <button id="backToTop" class="btn btn-warning shadow"
+ 
+  <button id="backToTop" class="btn btn-warning shadow" 
         style="position: fixed; bottom: 40px; right: 40px; z-index: 1000; display: none;">
        <i id="arrowUp" class="bi bi-arrow-up"></i>
    </button>
+
 
 
 
@@ -221,6 +235,38 @@ upBtn.addEventListener('mouseout',()=>{
  
   });  
 
+</script>
+
+{{-- unloading --}}
+
+<script>
+
+  let loginForm = document.querySelector("#loginForm");
+  let isFormChanged = false;
+
+
+  loginForm.addEventListener('input',(event)=>{
+
+  // isFormChanged = event.target.value != 0 ? true : false; 
+
+    console.log(event.target);
+
+  });
+
+  window.addEventListener("beforeunload", (e) => {
+    
+
+  if (isFormChanged) {
+    event.preventDefault();
+    event.returnValue = ""; 
+  }
+});
+
+</script>
+
+
+<script>
+  AOS.init(); 
 </script>
 
 
