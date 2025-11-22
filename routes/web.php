@@ -37,17 +37,16 @@ Route::get('/auth/facebook/callback',[FacebookAuthController::class,'callback'])
 
 Route::middleware('auth')->group( function(){
 
+// EmailVerificationRequest for email authentication
 Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
-    $request->fulfill();
+    $request->fulfill();    //make the user verified 
     return redirect('/dashboard'); 
-})->middleware(['signed'])->name('verification.verify');
+})->middleware(['signed'])->name('verification.verify');  // signed middleware for checking it has been hashed
 
 
 Route::post('/email/verification-notification', function (Request $request) {
     $request->user()->sendEmailVerificationNotification();
-
     return back()->with('message', 'Verification link sent!');
-
 })->middleware(['throttle:6,1'])->name('verification.send');
 
 

@@ -37,13 +37,14 @@
             class="form-control pe-5 @error('password') is-invalid @enderror" 
             placeholder="••••••••" 
             required
+            data-password-input
           >
           <label for="loginPassword">Password</label>
 
           <!-- Eye icon -->
           <i 
             class="bi bi-eye-fill position-absolute top-50 end-0 translate-middle-y me-3 text-secondary d-none" 
-            id="togglePassword" 
+             id="eyeloginPassword"
             style="cursor: pointer;">
           </i>
 

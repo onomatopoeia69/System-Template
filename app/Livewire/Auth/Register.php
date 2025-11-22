@@ -52,6 +52,7 @@ class Register extends Component
     
         return redirect()->route('users.dashboard');
 
+            
         }catch(\Exception $e){
 
 

@@ -237,32 +237,40 @@ upBtn.addEventListener('mouseout',()=>{
 
 </script>
 
-{{-- unloading --}}
+
+
+{{-- unloading
 
 <script>
 
   let loginForm = document.querySelector("#loginForm");
   let isFormChanged = false;
+  let regForm = document.querySelector("#regForm");
 
 
   loginForm.addEventListener('input',(event)=>{
 
-  // isFormChanged = event.target.value != 0 ? true : false; 
+    isFormChanged = event.target.value != 0 ? true : false; 
+  });
 
-    console.log(event.target);
+  regForm.addEventListener("input",(event)=>{
+
+
+    isRegFormChanged = event.target.value != 0 ? true : false;
 
   });
 
   window.addEventListener("beforeunload", (e) => {
     
 
-  if (isFormChanged) {
+  if (isFormChanged || isRegFormChanged) {
     event.preventDefault();
     event.returnValue = ""; 
   }
+  
 });
 
-</script>
+</script> --}}
 
 
 <script>
@@ -270,28 +278,28 @@ upBtn.addEventListener('mouseout',()=>{
 </script>
 
 
+
+
 <script>
+function eyeTogglePassword(inputId,eyeBtnId){
 
-  let eyeBtn = document.querySelector("#togglePassword");
-  let passwordInput = document.querySelector("#loginPassword");
 
-  
+  let eyeBtn = document.querySelector(eyeBtnId);
+  let passwordInput = document.querySelector(inputId);
+
+
   passwordInput.addEventListener('input',(event)=>{
 
       let value = event.target.value;
 
       if(value){
-
          eyeBtn.classList.remove('d-none');
-      
       }else{
-
         eyeBtn.classList.add('d-none');
-
       }
-    
 
   });
+
 
   eyeBtn.addEventListener('click',(event)=>{
 
@@ -309,12 +317,21 @@ upBtn.addEventListener('mouseout',()=>{
       eyeBtn.classList.add('bi-eye-fill');
     }
 
+  })
 
+}
+
+  document.addEventListener('DOMContentLoaded',()=>{
+
+    eyeTogglePassword("#loginPassword","#eyeloginPassword");
+    eyeTogglePassword("#regPassword","#eyeRegPassword");
+    eyeTogglePassword("#confirmPassword","#toggleConfirmPass");
 
   });
-  
+
 
 </script>
+
 
 <script>
   VANTA.NET({

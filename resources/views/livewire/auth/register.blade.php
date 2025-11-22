@@ -1,7 +1,7 @@
 <div>
 
 
-  @teleport('body ')
+
   
   <div class="modal fade" id="exampleModalToggle2" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="exampleModalToggleLabel2" tabindex="-1" wire:ignore.self>
   <div class="modal-dialog modal-dialog-scrollable">
@@ -15,12 +15,12 @@
 
       {{-- body of the register--}}
     <div class="modal-body">
-       <form wire:submit='register'>
+       <form wire:submit='register' id="regForm">
 
         <div class="mb-3">
             <input type="text"
                 class="form-control @error('fname') is-invalid   @else  @if (!empty($fname)) is-valid  @endif @enderror"
-                name="first_name" placeholder="First Name" wire:model.blur='fname' required>
+                name="first_name" placeholder="First Name" wire:model.live='fname' required>
         </div>
         @error('fname')
             <span class="text-danger">{{ $message }}</span>
@@ -29,7 +29,7 @@
         <div class="mb-3">
             <input type="text"
                 class="form-control @error('lname') is-invalid   @else  @if (!empty($lname)) is-valid  @endif @enderror"
-                name="last_name" placeholder="Last Name" wire:model.blur='lname' required>
+                name="last_name" placeholder="Last Name" wire:model.live='lname' required>
         </div>
         @error('lname')
             <span class="text-danger">{{ $message }}</span>
@@ -37,7 +37,7 @@
         <div class="mb-3">
             <input type="tel"
                 class="form-control @error('phone') is-invalid   @else  @if (!empty($phone)) is-valid  @endif @enderror"
-                name="phone" placeholder="Phone Number" wire:model.blur='phone' required>
+                name="phone" placeholder="Phone Number" wire:model.live='phone' required>
         </div>
         @error('phone')
             <span class="text-danger">{{ $message }}</span>
@@ -46,24 +46,42 @@
         <div class="mb-3">
             <input type="email"
                 class="form-control @error('regEmail') is-invalid   @else  @if (!empty($regEmail)) is-valid  @endif @enderror"
-                name="email" placeholder="Email Address" wire:model.blur='regEmail' required>
+                name="email" placeholder="Email Address" wire:model.live='regEmail' required>
         </div>
         @error('regEmail')
             <span class="text-danger">{{ $message }}</span>
         @enderror
 
-        <div class="mb-3">
+        <div class="mb-3 position-relative">
             <input type="password"
+                id="regPassword"
                 class="form-control @if($errors->has('confirmPass') || $errors->has('regPassword')) is-invalid   @elseif (!empty($confirmPass)) is-valid  @endif"
-                name="password" placeholder="Password" autocomplete="true"  wire:model.live='regPassword' required>
+                name="password" placeholder="Password" autocomplete="true" 
+                wire:model='regPassword' required>
+    
+           <!-- Eye icon -->
+          <i 
+            class="bi bi-eye-fill position-absolute top-50 end-0 translate-middle-y me-5 text-secondary d-none" 
+             id="eyeRegPassword"
+            style="cursor: pointer;">
+          </i>
+                                
         </div>
         @error('regPassword')
             <span class="text-danger">{{ $message }}</span>
         @enderror
-        <div class="mb-3">
+        <div class="mb-3 position-relative">
             <input type="password"
+                id="confirmPassword"
                 class="form-control @if($errors->has('confirmPass') || $errors->has('regPassword')) is-invalid   @elseif (!empty($confirmPass)) is-valid  @endif"
-                name="password" placeholder="Confirm Password" autocomplete="true" wire:model.live='confirmPass' required>
+                name="password" placeholder="Confirm Password" autocomplete="true" wire:model='confirmPass' required>
+
+           <i 
+              class="bi bi-eye-fill position-absolute top-50 end-0 translate-middle-y me-5 text-secondary d-none" 
+              id="toggleConfirmPass" 
+              style="cursor: pointer;">
+          </i>
+                       
         </div>
         @error('confirmPass')
             <span class="text-danger">{{ $message }}</span>
@@ -99,7 +117,11 @@
   </div>
 </div>
 
-@endteleport
   
 
 </div>
+
+
+
+
+
