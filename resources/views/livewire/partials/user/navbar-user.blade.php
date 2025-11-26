@@ -5,14 +5,17 @@
     <h1 class="text-2xl font-bold text-violet-700">ShopMate</h1>
 
   <nav class="space-x-8 text-xl flex items-center">
+
+    <div id="home">
     <a href="{{route('users.dashboard')}}" class="{{ request()->is('home') ? 'font-bold text-violet-700' : 'text-gray-600 hover:text-violet-700' }}">
         <i class="bi bi-house-door-fill"></i>
     </a>
+    </div>
 
-    <a href="/orders" class="{{ request()->is('orders') ? 'font-bold text-violet-700' : 'text-gray-600 hover:text-violet-700' }}">
+    <a id="orders" href="/orders" class="{{ request()->is('orders') ? 'font-bold text-violet-700' : 'text-gray-600 hover:text-violet-700' }}">
         <i class="bi bi-bag-fill"></i>
     </a>
-    <a href="/cart" class="{{ request()->is('cart') ? 'font-bold text-violet-700' : 'text-gray-600 hover:text-violet-700' }}">
+    <a id="cart" href="/cart" class="{{ request()->is('cart') ? 'font-bold text-violet-700' : 'text-gray-600 hover:text-violet-700' }}">
         <i class="bi bi-cart-fill"></i>
     </a>
 
@@ -73,19 +76,19 @@
     </div>
 
     <!-- Menu Items -->
-    <a href="/account"
+    <a id="profile" href="/account"
        class="block px-4 py-2 text-gray-600 hover:bg-violet-50 hover:text-violet-700 border-b">
       <i class="bi bi-person me-2"></i> Profile
     </a>
 
-    <a href="/settings"
+    <a id="settings" href="/settings"
        class="block px-4 py-2 text-gray-600 hover:bg-violet-50 hover:text-violet-700 border-b">
       <i class="bi bi-gear me-2"></i> Settings
     </a>
 
     <form method="POST" action="/logout">
       @csrf
-      <button type="submit"
+      <button id="logout" type="submit"
               class="w-full text-left px-4 py-2 text-gray-600 hover:bg-violet-50 hover:text-violet-700">
         <i class="bi bi-box-arrow-right me-2"></i> Logout
       </button>

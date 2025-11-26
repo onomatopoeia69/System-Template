@@ -6,6 +6,8 @@
    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/driver.js@latest/dist/driver.js.iife.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/driver.js@latest/dist/driver.css"/>
 @endsection
 
 @section('body-class', "bg-gray-50 text-gray-900 text-xl")
@@ -25,7 +27,7 @@
     <!-- Quick Links -->
     <section class="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-12">
       <div class="bg-white p-6 rounded-lg shadow hover:shadow-md text-center">
-        <p class="text-lg font-semibold">🧾 My Orders</p>
+        <p class="text-lg font-semibold" id="orders">🧾 My Orders</p>
         <p class="text-sm text-gray-500 mt-1">Track your orders</p>
       </div>
       <div class="bg-white p-6 rounded-lg shadow hover:shadow-md text-center">
@@ -321,6 +323,50 @@
     }
 
   });
+
+
+  function closeDropdown() {
+    dropdownMenu.classList.add('hidden');
+    dropdownBtn.classList.remove('font-bold');
+}
+
+setTimeout(() => {
+// driver 
+
+const driver = window.driver.js.driver;
+
+
+ dropdownMenu.classList.toggle('hidden');
+ dropdownBtn.classList.toggle('font-bold');
+
+const driverObj = driver({
+  
+  showProgress: true,
+  allowClose: false,
+   onCompleted: () => {
+            closeDropdown();
+  },
+
+  onDestroyed: () => {
+    closeDropdown();
+   },
+
+  steps: [
+    { element: '#home', popover: { title: 'Home', description: 'This is the button, you can click this to redirect to home.' } },
+    { element: '#orders', popover: { title: 'Orders', description: 'This button redirect you to the order you buy and the current condition of your order.' } },
+    { element: '#cart', popover: { title: 'Cart', description: 'This button redirect you to your product wishlist or added to cart products.' } },
+    { element: '#profile', popover: { title: 'Profile', description: 'This is the profile button' } },
+    { element: '#settings', popover: { title: 'Settings', description: 'This is the settings button' } },
+    { element: '#logout', popover: { title: 'Logout', description: 'This is the logout button' } },
+  ]
+});
+
+
+
+driverObj.drive();
+
+
+}, 3000); 
 
 
 </script>

@@ -20,6 +20,7 @@ use Illuminate\Http\Request;
 */
 
 
+// guests 
 
 Route::middleware('guest')->group( function(){
 
@@ -35,6 +36,8 @@ Route::get('/auth/facebook/callback',[FacebookAuthController::class,'callback'])
 });
 
 
+// users 
+
 Route::middleware('auth')->group( function(){
 
 // EmailVerificationRequest for email authentication
@@ -42,7 +45,6 @@ Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $requ
     $request->fulfill();    //make the user verified 
     return redirect('/dashboard'); 
 })->middleware(['signed'])->name('verification.verify');  // signed middleware for checking it has been hashed
-
 
 Route::post('/email/verification-notification', function (Request $request) {
     $request->user()->sendEmailVerificationNotification();
@@ -59,11 +61,12 @@ Route::post('/logout', function () {
         request()->session()->invalidate();
         request()->session()->regenerateToken();
        return redirect()->route('home.index')->with('login_required', true);
-       
 })->name('users.logout');
 
 });
 
+
+// admin 
 
 Route::middleware(['auth', 'role:admin'])->group( function(){
 
@@ -79,7 +82,7 @@ Route::post('/admin/logout', function () {
 });
 
 
-
+// fallback 
 
 Route::fallback(function () {
     return redirect()->route('home.index');
