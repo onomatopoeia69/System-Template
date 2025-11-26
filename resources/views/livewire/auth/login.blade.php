@@ -21,7 +21,7 @@
           
           {{-- Email --}}
           <div class="form-floating mb-3">
-            <input type="email" id="floatingInput" wire:model.live="email" class="form-control @error('email') is-invalid @enderror" placeholder="you@example.com" required>
+            <input type="email" id="floatingInput" wire:model="email" class="form-control @error('email') is-invalid @enderror" placeholder="you@example.com" required>
             <label for="floatingInput">Email address</label>
             @error('email')
               <div class="invalid-feedback d-block">{{ $message }}</div>

@@ -205,6 +205,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
 
 <script>
 
@@ -272,6 +273,25 @@ upBtn.addEventListener('mouseout',()=>{
 
 </script> --}}
 
+
+<script>
+
+
+  gsap.from("#product-name",{
+
+      x: -10,
+      duration: 1,
+      opacity: 0,
+      repeat: -1,
+      repeatDelay: 4,
+      delay: 2,
+      yoyo: true, 
+
+  });
+
+
+
+</script>
 
 <script>
   AOS.init(); 
