@@ -70,7 +70,6 @@ class Login extends Component
             $this->cooldown = RateLimiter::availableIn($this->throttleKey());
             $this->dispatch('clearAfterError');
             $this->reset('email','password');
-            
         }
     }
 
