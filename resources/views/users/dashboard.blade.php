@@ -19,15 +19,7 @@
 <!-- Main Content -->
 <main class="max-w-7xl mx-auto px-4 py-10">
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div class="md:col-span-1 bg-white p-6 rounded-lg shadow">
-            @include('users.socials.partials._add_form')
-        </div>
-
-        <div class="md:col-span-2 bg-white p-6 rounded-lg shadow">
-            @include('users.socials.partials._links_list')
-        </div>
-    </div>
+    @include('users.socials.main')
 
 </main>
 

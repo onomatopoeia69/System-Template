@@ -22,11 +22,11 @@
 
 <div class="relative inline-block text-left text-base">
 
-    <button id="notificationBtn" class="text-gray-600 hover:text-violet-700">  
+    <button id="notificationBtn" class="text-gray-600 hover:text-violet-700">
       <i class="bi bi-bell-fill text-xl"></i>
     </button>
 
-    
+
   <div id="notificationMenu"
      class="hidden absolute right-0 mt-2 w-80 bg-white border border-gray-200 rounded-lg shadow-lg z-50 text-sm">
   <div class="px-4 py-2 font-semibold text-gray-700 border-b">Notifications</div>
