@@ -15,14 +15,14 @@
 
 @section('content')
 
+<div class="ml-64 transition-all duration-300">
 
-<!-- Main Content -->
-<main class="max-w-7xl mx-auto px-4 py-10">
+  <div class="min-h-screen bg-gray-50">
+
+
+
 
     @include('users.socials.main')
-
-</main>
-
 
 
 
@@ -60,6 +60,10 @@
     const dropdownBtn = document.getElementById('dropdownButton');
   const dropdownMenu = document.getElementById('dropdownMenu');
 
+ const sidebar = document.getElementById('sidebar');
+const mainContent = document.getElementById('mainContent');
+const sidebarToggle = document.getElementById('sidebarToggle');
+
 
     document.addEventListener('DOMContentLoaded', function () {
         var liveToast = document.getElementById('liveToast');
@@ -74,79 +78,15 @@
         }
     });
 
-  document.addEventListener('click', function (e) {
-    if (dropdownBtn.contains(e.target)) {
-      dropdownMenu.classList.toggle('hidden');
-       dropdownBtn.classList.toggle('font-bold');
-       dropdownBtn.classList.toggle('text-violet-700');
-    } else if (!dropdownMenu.contains(e.target)) {
-      dropdownMenu.classList.add('hidden');
-      dropdownBtn.classList.remove('font-bold', 'text-violet-700');
-    }
-  });
-
-  document.addEventListener('click',function(s){
-
-    if(notificationBtn.contains(s.target)){
-
-      notificationMenu.classList.toggle('hidden');
-      notificationBtn.classList.toggle('font-bold');
-      notificationBtn.classList.toggle('text-violet-700');
-
-    }else if(!notificationMenu.contains(s.target)){
-
-      notificationMenu.classList.add('hidden');
-      notificationBtn.classList.remove('font-bold', 'text-violet-700');
-    }
-
-  });
 
 
-<<<<<<< HEAD
-  function closeDropdown() {
-    dropdownMenu.classList.add('hidden');
-    dropdownBtn.classList.remove('font-bold');
-}
+  sidebarToggle.addEventListener('click', function () {
 
-setTimeout(() => {
-// driver
+    sidebar.classList.toggle('-translate-x-full');
 
-const driver = window.driver.js.driver;
+    mainContent.classList.toggle('ml-64');
 
-
- dropdownMenu.classList.toggle('hidden');
- dropdownBtn.classList.toggle('font-bold');
-
-const driverObj = driver({
-
-  showProgress: true,
-  allowClose: false,
-   onCompleted: () => {
-            closeDropdown();
-  },
-
-  onDestroyed: () => {
-    closeDropdown();
-   },
-
-  steps: [
-    { element: '#home', popover: { title: 'Home', description: 'This is the button, you can click this to redirect to home.' } },
-    { element: '#orders', popover: { title: 'Orders', description: 'This button redirect you to the order you buy and the current condition of your order.' } },
-    { element: '#cart', popover: { title: 'Cart', description: 'This button redirect you to your product wishlist or added to cart products.' } },
-    { element: '#profile', popover: { title: 'Profile', description: 'This is the profile button' } },
-    { element: '#settings', popover: { title: 'Settings', description: 'This is the settings button' } },
-    { element: '#logout', popover: { title: 'Logout', description: 'This is the logout button' } },
-  ]
 });
-
-
-
-driverObj.drive();
-
-
-}, 3000);
-=======
->>>>>>> 288b9158a0bf29f5a0b29c550250a195db8c9705
 
 
 </script>
