@@ -325,48 +325,6 @@
   });
 
 
-  function closeDropdown() {
-    dropdownMenu.classList.add('hidden');
-    dropdownBtn.classList.remove('font-bold');
-}
-
-setTimeout(() => {
-// driver 
-
-const driver = window.driver.js.driver;
-
-
- dropdownMenu.classList.toggle('hidden');
- dropdownBtn.classList.toggle('font-bold');
-
-const driverObj = driver({
-  
-  showProgress: true,
-  allowClose: false,
-   onCompleted: () => {
-            closeDropdown();
-  },
-
-  onDestroyed: () => {
-    closeDropdown();
-   },
-
-  steps: [
-    { element: '#home', popover: { title: 'Home', description: 'This is the button, you can click this to redirect to home.' } },
-    { element: '#orders', popover: { title: 'Orders', description: 'This button redirect you to the order you buy and the current condition of your order.' } },
-    { element: '#cart', popover: { title: 'Cart', description: 'This button redirect you to your product wishlist or added to cart products.' } },
-    { element: '#profile', popover: { title: 'Profile', description: 'This is the profile button' } },
-    { element: '#settings', popover: { title: 'Settings', description: 'This is the settings button' } },
-    { element: '#logout', popover: { title: 'Logout', description: 'This is the logout button' } },
-  ]
-});
-
-
-
-driverObj.drive();
-
-
-}, 3000); 
 
 
 </script>
