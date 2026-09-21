@@ -15,16 +15,14 @@
 
 @section('content')
 
-<div class="ml-64 transition-all duration-300">
+<div class="ml-24 transition-all duration-300">
 
   <div class="min-h-screen bg-gray-50">
 
-
-
-
     @include('users.socials.main')
 
-
+  </div>
+</div>
 
 
 <div class="toast-container position-fixed  bottom-0 end-0 p-3" style="z-index: 1055;">
