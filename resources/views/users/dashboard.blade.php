@@ -17,47 +17,51 @@
 
 <div class="ml-64 transition-all duration-300">
 
-  <div class="min-h-screen bg-gray-50">
+    <div class="min-h-screen bg-gray-50">
 
 
+        <a href="{{ route('socials.index') }}" class="inline-flex items-center justify-center gap-2.5 px-5 py-3 rounded-xl
+          text-white font-semibold text-sm bg-indigo-600 hover:bg-indigo-700
+          shadow-md shadow-indigo-600/10 hover:shadow-lg hover:shadow-indigo-600/20
+          active:scale-95 focus:outline-none focus:ring-4 focus:ring-indigo-500/30
+          transition-all duration-200 group">
+            <!-- Icon with dynamic scale on hover -->
+            <i class="bi bi-share text-indigo-100 group-hover:scale-110 transition-transform text-base"></i>
+            <span>Socials</span>
+        </a>
 
 
-    @include('users.socials.main')
+        <div class="toast-container position-fixed  bottom-0 end-0 p-3" style="z-index: 1055;">
 
 
+            @if (session('welcome'))
 
+            <x-toast color="success" id='liveToast' text="white" time="{{session('time')}}">
+                {{session('welcome')}} {{Auth::user()->first_name}}
+            </x-toast>
 
-<div class="toast-container position-fixed  bottom-0 end-0 p-3" style="z-index: 1055;">
+            @endif
 
+            @if (session()->has('emailVerified') && session('emailVerified') == false)
+            <x-toast color="danger" id="emailToast" text="white" time="{{ session('time') }}">
+                Please verify your email.
+                <div class="mt-2 pt-2 border-top">
+                    <x-buttons color="warning" size="sm" href="{{route('users.verify')}}">Take action</x-buttons>
+                    <x-buttons color="secondary" size="sm">Close</x-buttons>
+                </div>
+            </x-toast>
+            @endif
 
-    @if (session('welcome'))
-
-    <x-toast color="success" id='liveToast' text="white" time="{{session('time')}}">
-        {{session('welcome')}} {{Auth::user()->first_name}}
-    </x-toast>
-
-    @endif
-
-    @if (session()->has('emailVerified') && session('emailVerified') == false)
-    <x-toast color="danger" id="emailToast" text="white" time="{{ session('time') }}">
-        Please verify your email.
-        <div class="mt-2 pt-2 border-top">
-            <x-buttons color="warning" size="sm" href="{{route('users.verify')}}">Take action</x-buttons>
-            <x-buttons color="secondary" size="sm">Close</x-buttons>
         </div>
-    </x-toast>
-    @endif
-
-</div>
 
 
 
-@section('body-script')
+        @section('body-script')
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.min.js"></script>
 
-<script>
-    const dropdownBtn = document.getElementById('dropdownButton');
+        <script>
+            const dropdownBtn = document.getElementById('dropdownButton');
   const dropdownMenu = document.getElementById('dropdownMenu');
 
  const sidebar = document.getElementById('sidebar');
@@ -89,8 +93,8 @@ const sidebarToggle = document.getElementById('sidebarToggle');
 });
 
 
-</script>
+        </script>
 
-@endsection
+        @endsection
 
-@endsection
+        @endsection

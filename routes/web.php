@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\Auth\FacebookAuthController;
 use App\Http\Controllers\Auth\GoogleAuthController;
-use App\Http\Controllers\ProductController;
+use App\Http\Controllers\{ProductController,SocialsController};
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -20,7 +20,7 @@ use Illuminate\Http\Request;
 */
 
 
-// guests 
+// guests
 
 Route::middleware('guest')->group( function(){
 
@@ -36,14 +36,14 @@ Route::get('/auth/facebook/callback',[FacebookAuthController::class,'callback'])
 });
 
 
-// users 
+// users
 
 Route::middleware('auth')->group( function(){
 
 // EmailVerificationRequest for email authentication
 Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
-    $request->fulfill();    //make the user verified 
-    return redirect('/dashboard'); 
+    $request->fulfill();    //make the user verified
+    return redirect('/dashboard');
 })->middleware(['signed'])->name('verification.verify');  // signed middleware for checking it has been hashed
 
 Route::post('/email/verification-notification', function (Request $request) {
@@ -63,10 +63,17 @@ Route::post('/logout', function () {
        return redirect()->route('home.index')->with('login_required', true);
 })->name('users.logout');
 
+// Socials
+Route::get('/socials',[SocialsController::class,'index'])->name('socials.index');
+Route::post('/socials/store',[SocialsController::class,'store'])->name('socials.store');
+Route::put('/socials/{social}', [SocialsController::class, 'update'])->name('socials.update');
+Route::delete('/socials', [SocialsController::class, 'destroy'])->name('socials.destroy');
+
+
 });
 
 
-// admin 
+// admin
 
 Route::middleware(['auth', 'role:admin'])->group( function(){
 
@@ -82,7 +89,7 @@ Route::post('/admin/logout', function () {
 });
 
 
-// fallback 
+// fallback
 
 Route::fallback(function () {
     return redirect()->route('home.index');

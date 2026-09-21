@@ -11,9 +11,22 @@ class Social extends Model
     use HasFactory;
 
     protected $fillable = [
-        'platform',
-        'url',
         'user_id',
+        'platform',
+        'username',
+        'url',
+        'label',
+        'icon',
+        'is_visible',
+        'is_verified',
+        'sort_order',
+        'verified_at',
+    ];
+
+    protected $casts = [
+        'is_visible' => 'boolean',
+        'is_verified' => 'boolean',
+        'verified_at' => 'datetime',
     ];
 
     public function user(): BelongsTo

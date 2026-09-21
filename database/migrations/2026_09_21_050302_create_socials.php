@@ -12,9 +12,18 @@ return new class extends Migration {
     {
         Schema::create('socials', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->string('platform'); // 'linkedin', 'github', 'twitter'
+            $table->foreignId('user_id')
+                ->constrained()
+                ->onDelete('cascade');
+            $table->string('platform');
+            $table->string('username')->nullable();
             $table->string('url');
+            $table->string('label')->nullable();
+            $table->string('icon')->nullable();
+            $table->boolean('is_visible')->default(true);
+            $table->boolean('is_verified')->default(false);
+            $table->unsignedInteger('sort_order')->default(0);
+            $table->timestamp('verified_at')->nullable();
             $table->timestamps();
             $table->unique(['user_id', 'platform']);
         });

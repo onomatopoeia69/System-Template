@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <title>@yield('title', 'ShopMate')</title>
-    
+
     @yield('head-script')
 
 </head>
