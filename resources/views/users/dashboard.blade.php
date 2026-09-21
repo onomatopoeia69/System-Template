@@ -110,6 +110,7 @@
   });
 
 
+<<<<<<< HEAD
   function closeDropdown() {
     dropdownMenu.classList.add('hidden');
     dropdownBtn.classList.remove('font-bold');
@@ -152,6 +153,8 @@ driverObj.drive();
 
 
 }, 3000);
+=======
+>>>>>>> 288b9158a0bf29f5a0b29c550250a195db8c9705
 
 
 </script>
