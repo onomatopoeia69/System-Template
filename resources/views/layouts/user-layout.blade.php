@@ -10,13 +10,29 @@
     @yield('head-script')
 
 </head>
-
 <body class="@yield('body-class', '')">
-    @include('partials.user.navbar-user')
+
+    {{-- Sidebar --}}
+    @include('partials.user.sidebar-user')
+
+
+    {{-- Main content --}}
+    <div id="mainContent" class="ml-64 transition-all duration-300">
+
+        {{-- Navbar --}}
+        @include('partials.user.navbar-user')
+
+        {{-- Page content --}}
         @yield('content')
 
+        {{-- Footer --}}
         @include('partials.user.footer-user')
-     @yield('body-script')
+
+    </div>
+
+
+    @yield('body-script')
+
 </body>
 
 </html>
