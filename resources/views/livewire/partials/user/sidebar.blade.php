@@ -23,7 +23,7 @@
         {{-- taasan --}}
         <nav class="space-y-2">
 
-            <a href="#" class="flex items-center gap-3 px-4 py-3 rounded-lg
+            <a href="{{ route('users.dashboard') }}" class="flex items-center gap-3 px-4 py-3 rounded-lg
                                 hover:bg-gray-100 font-semibold text-sm">
                 <i class="bi bi-house"></i>
                 <span>Home</span>

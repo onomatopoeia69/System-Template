@@ -38,7 +38,7 @@ class SocialsController extends Controller
                 'is_visible' => true,
                 'is_verified' => false,
                 'sort_order' => 0,
-                'verified_at' => null,
+                'verified_at' => null, 
             ]);
 
             return redirect()

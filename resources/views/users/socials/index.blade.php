@@ -55,4 +55,40 @@
 @include('users.socials.partials._add_form')
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.min.js"></script>
+
+        <script>
+            const dropdownBtn = document.getElementById('dropdownButton');
+  const dropdownMenu = document.getElementById('dropdownMenu');
+
+ const sidebar = document.getElementById('sidebar');
+const mainContent = document.getElementById('mainContent');
+const sidebarToggle = document.getElementById('sidebarToggle');
+
+
+    document.addEventListener('DOMContentLoaded', function () {
+        var liveToast = document.getElementById('liveToast');
+
+        if (liveToast) {
+            new bootstrap.Toast(liveToast).show();
+        }
+
+        var emailToast = document.getElementById('emailToast');
+        if (emailToast) {
+            new bootstrap.Toast(emailToast).show();
+        }
+    });
+
+
+
+  sidebarToggle.addEventListener('click', function () {
+
+    sidebar.classList.toggle('-translate-x-full');
+
+    mainContent.classList.toggle('ml-64');
+
+});
+
+
+        </script>
 @endsection
