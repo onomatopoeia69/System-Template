@@ -1,8 +1,5 @@
 <div>
 
-  {{-- first modal trigger for register --}}
-<li><a href="#" class="hover:text-yellow-300"  data-bs-target="#exampleModalToggle" data-bs-toggle="modal" >Login/Signup</a></li>
-
   {{-- first modal for login --}}
 <div class="modal fade" id="exampleModalToggle" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false" wire:ignore.self>
   <div class="modal-dialog modal-dialog-centered">

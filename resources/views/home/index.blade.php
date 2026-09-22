@@ -366,8 +366,8 @@
     </footer>
 
     {{-- Back to top --}}
-    <button id="backToTop" aria-label="Back to top">
-        <i class="bi bi-arrow-up"></i>
+    <button  id="backToTop" aria-label="Back to top">
+        <i class="bi bi-arrow-up-circle"></i>
     </button>
 
 
@@ -387,6 +387,7 @@
 <script>
 
   let upBtn = document.querySelector("#backToTop");
+  let icon = upBtn.querySelector(".bi-arrow-up");
 
   window.addEventListener('scroll',()=>{
 
@@ -400,18 +401,23 @@
 
   upBtn.addEventListener('mouseover',(event)=>{
 
+
     if(event.target.id === "arrowUp" || event.target.id === "backToTop")
     {
-      upBtn.classList.add('fw-bold');
-      upBtn.textContent = "Back To the Top";
+    
+        upBtn.innerHTML = '<b>UP</b>';
+
+      
     }
+
   });
 
 upBtn.addEventListener('mouseout',()=>{
 
-    upBtn.innerHTML= `<i id="arrowUp" class="bi bi-arrow-up">`;
+    upBtn.innerHTML= `<i id="arrowUp" class="bi bi-arrow-up-circle">`;
  
   });  
+  
 
 </script>
 
@@ -571,6 +577,23 @@ var typed = new Typed('#typed', {
       disableOnInteraction: false, 
     },
   });
+</script>
+
+
+<script>
+    
+  let loginModal = new bootstrap.Modal(document.getElementById('exampleModalToggle'));
+  let loginBtn = document.getElementById('loginBtn');
+ 
+  loginBtn.addEventListener('click',function () {
+
+    loginModal.show();
+
+  });
+ 
+
+
+
 </script>
 
  @if(session('login_required'))

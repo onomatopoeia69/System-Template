@@ -798,8 +798,8 @@ a {
     right: 25px;
     bottom: 25px;
     z-index: 999;
-    width: 45px;
-    height: 45px;
+    width: 60px;
+    height: 60px;
     display: none;
     border: 1px solid var(--nfc-yellow);
     border-radius: 50%;

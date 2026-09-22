@@ -22,8 +22,7 @@
                 <li><a href="#services" class="hover:text-yellow-300">Services</a></li>
                  <li><a href="#about" class="hover:text-yellow-300">About</a></li>
                 <li><a href="#contact" class="hover:text-yellow-300">Contact Us</a></li>
-                <li><a href="{{ url('login') }}" class="hover:text-yellow-300">Login</a></li>
-            
+                 <li><a href="#" class="hover:text-yellow-300" id="loginBtn" data-bs-target="#exampleModalToggle" data-bs-toggle="modal" >Login/Signup</a></li>
             </ul>
         </div>
 
