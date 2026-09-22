@@ -1,14 +1,5 @@
 <div>
 
-    {{-- LOGIN / SIGNUP NAVBAR TRIGGER --}}
-    <li class="nav-item">
-        <a href="#"
-           class="nav-link nfc-nav-link nfc-login-trigger"
-           data-bs-target="#exampleModalToggle"
-           data-bs-toggle="modal">
-            Login/Signup
-        </a>
-    </li>
 
     {{-- login modal --}}
     <div class="modal fade nfc-auth-modal"

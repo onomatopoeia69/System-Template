@@ -402,8 +402,7 @@
 
     if(event.target.id === "arrowUp" || event.target.id === "backToTop")
     {
-      upBtn.classList.add('fw-bold');
-      upBtn.textContent = "Back To the Top";
+      upBtn.innerHTML = '<b>UP</b>';
     }
   });
 
@@ -571,6 +570,19 @@ var typed = new Typed('#typed', {
       disableOnInteraction: false, 
     },
   });
+</script>
+
+<script>
+    
+  let loginModal = new bootstrap.Modal(document.getElementById('exampleModalToggle'));
+  let loginBtn = document.getElementById('loginBtn');
+ 
+  loginBtn.addEventListener('click',function () {
+
+    loginModal.show();
+
+  });
+ 
 </script>
 
  @if(session('login_required'))
