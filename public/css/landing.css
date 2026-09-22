@@ -1396,3 +1396,362 @@ modal container */
     }
 
 }
+
+
+/* Register modal */
+.pandoras-register-modal {
+    background: #0b1220 !important;
+    border: 1px solid rgba(253, 224, 71, .20) !important;
+    border-radius: 18px !important;
+    overflow: hidden;
+
+    box-shadow:
+        0 30px 80px rgba(0, 0, 0, .65),
+        0 0 40px rgba(253, 224, 71, .06);
+}
+
+
+/* HEADER */
+
+.pandoras-register-header {
+    padding: 25px 28px 20px;
+
+    background:
+        radial-gradient(
+            circle at 100% 0%,
+            rgba(253, 224, 71, .10),
+            transparent 40%
+        );
+
+    border-bottom: 1px solid rgba(148, 163, 184, .12) !important;
+}
+
+.register-label {
+    display: block;
+
+    margin-bottom: 6px;
+
+    color: #fde047;
+
+    font-size: 9px;
+    font-weight: 900;
+    letter-spacing: .18em;
+}
+
+.register-title {
+    margin: 0;
+
+    color: #f8fafc;
+
+    font-size: 24px;
+    font-weight: 900;
+}
+
+.register-subtitle {
+    margin: 6px 0 0;
+
+    color: #8997ab;
+
+    font-size: 12px;
+}
+
+.pandoras-close {
+    filter: invert(1);
+    opacity: .65;
+}
+
+.pandoras-close:hover {
+    opacity: 1;
+}
+
+
+/* BODY */
+
+.pandoras-register-body {
+    padding: 24px 28px 28px;
+}
+
+
+/* INPUTS */
+
+.register-field {
+    margin-bottom: 14px;
+}
+
+.register-field label {
+    display: block;
+
+    margin-bottom: 6px;
+
+    color: #cbd5e1;
+
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.register-input {
+    height: 45px;
+
+    padding: 10px 13px;
+
+    color: #f8fafc !important;
+
+    background: #111c2f !important;
+
+    border: 1px solid rgba(148, 163, 184, .20) !important;
+
+    border-radius: 9px !important;
+
+    font-size: 13px;
+
+    box-shadow: none !important;
+
+    transition: .2s ease;
+}
+
+.register-input::placeholder {
+    color: #64748b !important;
+}
+
+.register-input:focus {
+    background: #142039 !important;
+
+    border-color: #fde047 !important;
+
+    box-shadow:
+        0 0 0 3px rgba(253, 224, 71, .07) !important;
+}
+
+
+/* PASSWORD */
+
+.register-password {
+    position: relative;
+}
+
+.register-password .register-input {
+    padding-right: 45px;
+}
+
+.register-eye {
+    position: absolute;
+
+    right: 14px;
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    color: #64748b;
+
+    cursor: pointer;
+
+    transition: .2s ease;
+}
+
+.register-eye:hover {
+    color: #fde047;
+}
+
+
+/* ERRORS */
+
+.register-error {
+    display: block;
+
+    margin-top: -7px;
+    margin-bottom: 10px;
+
+    color: #f87171;
+
+    font-size: 11px;
+}
+
+
+/* REGISTER BUTTON */
+
+.register-main-btn {
+    width: 100%;
+    height: 46px;
+
+    margin-top: 5px;
+
+    border: 1px solid #fde047;
+    border-radius: 9px;
+
+    background: #fde047;
+    color: #111827;
+
+    font-size: 13px;
+    font-weight: 900;
+
+    transition: .25s ease;
+}
+
+.register-main-btn:hover {
+    background: #ffe76b;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 10px 28px rgba(253, 224, 71, .22),
+        0 0 30px rgba(253, 224, 71, .08);
+}
+
+
+/* DIVIDER */
+
+.register-divider {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin: 20px 0 15px;
+
+    color: #64748b;
+
+    font-size: 9px;
+    font-weight: 800;
+}
+
+.register-divider::before,
+.register-divider::after {
+    content: "";
+
+    height: 1px;
+
+    flex: 1;
+
+    background: rgba(148, 163, 184, .15);
+}
+
+
+/* SOCIAL BUTTONS */
+
+.register-social {
+    width: 100%;
+    height: 43px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 9px;
+
+    margin-bottom: 9px;
+
+    border-radius: 9px;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    text-decoration: none;
+
+    cursor: pointer;
+
+    transition: .2s ease;
+}
+
+.register-social.google {
+    color: #f8fafc;
+
+    background: rgba(255,255,255,.035);
+
+    border: 1px solid rgba(255,255,255,.14);
+}
+
+.register-social.google i {
+    color: #ea4335;
+}
+
+.register-social.google:hover {
+    color: white;
+
+    background: rgba(255,255,255,.08);
+
+    transform: translateY(-1px);
+}
+
+
+.register-social.facebook {
+    color: #f8fafc;
+
+    background: rgba(24,119,242,.06);
+
+    border: 1px solid rgba(24,119,242,.30);
+}
+
+.register-social.facebook i {
+    color: #1877f2;
+}
+
+.register-social.facebook:hover {
+    color: white;
+
+    background: rgba(24,119,242,.13);
+
+    transform: translateY(-1px);
+}
+
+
+/* LOGIN LINK */
+
+.register-login {
+    margin-top: 18px;
+
+    padding-top: 17px;
+
+    border-top: 1px solid rgba(148, 163, 184, .12);
+
+    text-align: center;
+
+    color: #8997ab;
+
+    font-size: 11px;
+}
+
+.register-login a {
+    margin-left: 4px;
+
+    color: #fde047;
+
+    font-weight: 800;
+
+    text-decoration: none;
+}
+
+.register-login a:hover {
+    color: #fff;
+
+    text-decoration: underline;
+}
+
+
+/* MODAL LAYER */
+
+#exampleModalToggle2 {
+    z-index: 1055 !important;
+}
+
+.modal-backdrop {
+    z-index: 1050 !important;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 575.98px) {
+
+    .pandoras-register-header {
+        padding: 20px;
+    }
+
+    .pandoras-register-body {
+        padding: 20px;
+    }
+
+    .register-title {
+        font-size: 21px;
+    }
+}
