@@ -867,3 +867,532 @@ a {
         padding: 30px 24px;
     }
 }
+
+
+/* nfc auth modal */
+.nfc-auth-modal {
+    background: rgba(3, 7, 18, 0.72);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+
+/* 
+modal container */
+.nfc-auth-modal .modal-dialog {
+    max-width: 470px;
+    padding: 15px;
+}
+
+.nfc-modal-content {
+    position: relative;
+
+    overflow: hidden;
+
+    border: 1px solid rgba(253, 224, 71, 0.22);
+    border-radius: 22px;
+
+    background:
+        radial-gradient(
+            circle at 100% 0%,
+            rgba(253, 224, 71, 0.08),
+            transparent 30%
+        ),
+        linear-gradient(
+            145deg,
+            #172033 0%,
+            #111827 48%,
+            #0b1220 100%
+        );
+
+    color: #fff;
+
+    box-shadow:
+        0 30px 80px rgba(0, 0, 0, 0.55),
+        0 0 50px rgba(253, 224, 71, 0.04);
+}
+
+/* top accent */
+.nfc-modal-content::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 3px;
+
+    background: #fde047;
+}
+
+
+
+/* close button */
+.nfc-modal-close {
+    position: absolute;
+
+    top: 18px;
+    right: 18px;
+
+    z-index: 10;
+
+    width: 36px;
+    height: 36px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.05);
+
+    color: #94a3b8;
+
+    transition: 0.25s ease;
+}
+
+.nfc-modal-close:hover {
+    background: #fde047;
+
+    color: #111827;
+
+    border-color: #fde047;
+
+    transform: rotate(90deg);
+}
+
+
+
+/* header */
+.nfc-modal-header {
+    display: flex;
+    align-items: center;
+
+    gap: 15px;
+
+    padding: 35px 35px 20px;
+}
+
+.nfc-auth-icon {
+    width: 54px;
+    height: 54px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 14px;
+
+    border: 1px solid rgba(253, 224, 71, 0.5);
+
+    background: rgba(253, 224, 71, 0.08);
+
+    color: #fde047;
+
+    font-size: 24px;
+
+    box-shadow:
+        0 0 25px rgba(253, 224, 71, 0.08);
+}
+
+.nfc-auth-label {
+    color: #fde047;
+
+    font-size: 10px;
+    font-weight: 800;
+
+    letter-spacing: 3px;
+
+    margin-bottom: 4px;
+}
+
+.nfc-modal-title {
+    margin: 0;
+
+    color: #fff;
+
+    font-size: 25px;
+    font-weight: 800;
+}
+
+.nfc-modal-subtitle {
+    margin: 4px 0 0;
+
+    color: #94a3b8;
+
+    font-size: 12px;
+}
+
+
+
+/* body */
+.nfc-modal-body {
+    padding: 10px 35px 25px;
+}
+
+
+/* input */
+.nfc-input-group label {
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: #cbd5e1;
+
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.nfc-input-wrapper {
+    position: relative;
+}
+
+.nfc-input-icon {
+    position: absolute;
+
+    left: 16px;
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    z-index: 2;
+
+    color: #64748b;
+
+    font-size: 16px;
+
+    transition: color 0.25s ease;
+}
+
+.nfc-input {
+    width: 100%;
+
+    height: 52px;
+
+    padding: 0 45px;
+
+    border: 1px solid rgba(255,255,255,.10) !important;
+    border-radius: 10px !important;
+
+    outline: none !important;
+
+    background: rgba(255,255,255,.045) !important;
+
+    color: #fff !important;
+
+    font-size: 14px;
+
+    box-shadow: none !important;
+
+    transition:
+        border-color .25s ease,
+        background .25s ease,
+        box-shadow .25s ease;
+}
+
+.nfc-input::placeholder {
+    color: #64748b;
+}
+
+.nfc-input:focus {
+    border-color: #fde047 !important;
+
+    background: rgba(253,224,71,.035) !important;
+
+    box-shadow:
+        0 0 0 3px rgba(253,224,71,.08) !important;
+}
+
+.nfc-input:focus + .nfc-password-toggle,
+.nfc-input-wrapper:focus-within .nfc-input-icon {
+    color: #fde047;
+}
+
+.nfc-input-error {
+    border-color: #ef4444 !important;
+}
+
+
+
+/* pass show, hide */
+.nfc-password-toggle {
+    position: absolute;
+
+    right: 16px;
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    z-index: 5;
+
+    color: #64748b;
+
+    cursor: pointer;
+
+    transition: color .2s ease;
+}
+
+.nfc-password-toggle:hover {
+    color: #fde047;
+}
+
+
+
+/* error */
+.nfc-error {
+    margin-top: 6px;
+
+    color: #fca5a5;
+
+    font-size: 11px;
+}
+
+
+/* forget pass */
+.nfc-forgot-link {
+    color: #fde047 !important;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    transition: opacity .2s ease;
+}
+
+.nfc-forgot-link:hover {
+    opacity: .75;
+}
+
+.nfc-forgot-link i {
+    font-size: 10px;
+
+    margin-left: 3px;
+}
+
+/* login buttomn */
+.nfc-auth-button {
+    width: 100%;
+    height: 52px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 2px solid #fde047;
+    border-radius: 10px;
+
+    background: #fde047;
+
+    color: #111827;
+
+    font-size: 14px;
+    font-weight: 900;
+
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease,
+        background .25s ease;
+}
+
+.nfc-auth-button:hover {
+    background: #facc15;
+    border-color: #facc15;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 10px 25px rgba(253,224,71,.20);
+}
+
+.nfc-auth-button:active {
+    transform: translateY(0);
+}
+
+.nfc-disabled-button {
+    background: #374151;
+    border-color: #4b5563;
+
+    color: #9ca3af;
+
+    cursor: not-allowed;
+
+    box-shadow: none;
+}
+
+.nfc-disabled-button:hover {
+    transform: none;
+
+    background: #374151;
+
+    border-color: #4b5563;
+
+    box-shadow: none;
+}
+
+
+/* divider */
+.nfc-divider {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    margin: 25px 0;
+
+    color: #64748b;
+
+    font-size: 9px;
+    font-weight: 800;
+
+    letter-spacing: 2px;
+}
+
+.nfc-divider::before,
+.nfc-divider::after {
+    content: "";
+
+    height: 1px;
+
+    flex: 1;
+
+    background: rgba(255,255,255,.08);
+}
+
+
+
+/* social buttons */
+.nfc-social-buttons {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 10px;
+}
+
+.nfc-social-button {
+    height: 46px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+
+    border: 1px solid rgba(255,255,255,.10);
+    border-radius: 9px;
+
+    background: rgba(255,255,255,.04);
+
+    color: #e2e8f0;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    transition: .25s ease;
+}
+
+.nfc-social-button:hover {
+    border-color: rgba(253,224,71,.45);
+
+    background: rgba(253,224,71,.06);
+
+    color: #fde047;
+
+    transform: translateY(-2px);
+}
+
+.nfc-social-button i {
+    font-size: 15px;
+}
+
+
+
+/* register switch */
+.nfc-register-switch {
+    margin-top: 25px;
+
+    padding-top: 20px;
+
+    border-top: 1px solid rgba(255,255,255,.07);
+
+    text-align: center;
+
+    color: #94a3b8;
+
+    font-size: 12px;
+}
+
+.nfc-register-switch a {
+    color: #fde047 !important;
+
+    margin-left: 4px;
+
+    font-weight: 800;
+}
+
+.nfc-register-switch a i {
+    font-size: 10px;
+
+    transition: transform .2s ease;
+}
+
+.nfc-register-switch a:hover i {
+    transform: translateX(4px);
+}
+
+
+/* footer */
+.nfc-modal-footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 7px;
+
+    padding: 15px;
+
+    border-top: 1px solid rgba(255,255,255,.06);
+
+    color: #64748b;
+
+    font-size: 10px;
+
+    letter-spacing: .5px;
+}
+
+.nfc-modal-footer i {
+    color: #fde047;
+}
+
+
+/* mobile view */
+@media (max-width: 576px) {
+
+    .nfc-auth-modal .modal-dialog {
+        margin: 10px;
+    }
+
+    .nfc-modal-header {
+        padding: 30px 22px 15px;
+    }
+
+    .nfc-modal-body {
+        padding: 10px 22px 22px;
+    }
+
+    .nfc-modal-title {
+        font-size: 21px;
+    }
+
+    .nfc-social-buttons {
+        grid-template-columns: 1fr;
+    }
+
+}
