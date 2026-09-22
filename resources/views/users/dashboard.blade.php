@@ -9,6 +9,7 @@
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="https://cdn.jsdelivr.net/npm/driver.js@latest/dist/driver.js.iife.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/driver.js@latest/dist/driver.css" />
+<script src="https://unpkg.com/lucide@latest"></script>
 @endsection
 
 @section('body-class', "bg-gray-50 text-gray-900 text-xl")
@@ -49,6 +50,10 @@
 
 
         @section('body-script')
+
+        <script>
+        lucide.createIcons();
+        </script>
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.min.js"></script>
 

@@ -23,13 +23,13 @@
         {{-- taasan --}}
         <nav class="space-y-2">
 
-            <a href="{{ route('users.dashboard') }}" class="flex items-center gap-3 px-4 py-3 rounded-lg
+            <a href="{{ route('users.dashboard') }}" wire:current="font-bold text-yellow-500" class="flex items-center gap-3 px-4 py-3 rounded-lg
                                 hover:bg-gray-100 font-semibold text-sm">
                 <i class="bi bi-house"></i>
                 <span>Home</span>
             </a>
 
-            <a href="#" class="flex items-center gap-3 px-4 py-3 rounded-lg
+            <a href="#"  class="flex items-center gap-3 px-4 py-3 rounded-lg
                           text-gray-600 hover:bg-gray-100 text-sm">
                 <i class="bi bi-receipt"></i>
                 <span>My Orders</span>
@@ -47,7 +47,7 @@
                 <span>Profile</span>
             </a>
 
-            <a href="{{ route('socials.index') }}" class="flex items-center gap-3 px-4 py-3 rounded-lg
+            <a href="{{ route('socials.index') }}" wire:current="font-bold text-yellow-500" class="flex items-center gap-3 px-4 py-3 rounded-lg
           text-gray-600 hover:bg-gray-100 text-sm">
                 <i class="bi bi-share"></i>
                 <span>Socials</span>

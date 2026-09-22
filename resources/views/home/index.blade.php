@@ -23,6 +23,7 @@
 
 
 
+
 {{-- the body tag if you need to insert the class of the body --}}
 
 @section('body-class', 'bg-gray-900 h-screen text-gray-300 font-sans')
