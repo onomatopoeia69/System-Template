@@ -32,166 +32,343 @@
 @section('content')
 
         
+<section id="hero">
+        <div class="hero-content container text-center">
+            <div class="hero-eyebrow" data-aos="fade-down" data-aos-duration="900">
+                <i class="bi bi-broadcast-pin"></i>
+                NFC • DIGITAL IDENTITY • SAFETY
+            </div>
 
-        <section id="hero" class="container-fluid text-center d-flex justify-content-center bg-gray-900 align-items-center" style="min-height: 100vh;">
-            <h1 class="display-2 fw-bold text-center">
-            <span class="d-block text-light">WE MAKING THINGS OUTSIDE</span>
-            <span id="typed" class="text-yellow-300"></span>
+            <h1 class="hero-title" data-aos="fade-up" data-aos-duration="1100">
+                <span class="white">SMARTER NFC.</span>
+                <span class="yellow"><span id="typed"></span></span>
             </h1>
 
+            <p class="hero-description" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1100">
+                NFC cards and tags designed for digital identity, contactless information,
+                and safer connections — including a simple Child Lost Mode for emergency contact.
+            </p>
 
-        <div class="custom-shape-divider-bottom-1761648475">
-            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-                <path d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z" class="shape-fill"></path>
-            </svg>
+            <div class="hero-actions" data-aos="fade-up" data-aos-delay="350" data-aos-duration="1100">
+                <a href="#services" class="btn btn-nfc-primary">
+                    Explore Services <i class="bi bi-arrow-right ms-2"></i>
+                </a>
+                <a href="#child-lost-mode" class="btn btn-nfc-outline">
+                    Child Lost Mode <i class="bi bi-shield-check ms-2"></i>
+                </a>
+            </div>
         </div>
-   
-        </section>
 
+        <div class="hero-scroll">
+            Scroll to explore
+            <i class="bi bi-chevron-down"></i>
+        </div>
+    </section>
 
-  <section id="products"  class="bg-gray-100 p-10" style="min-height:100vh;">
-
-   <span class="d-block fs-2 text-center text-black fw-bold pb-5" data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1500" >
-   <div class="flex-grow-1 border-top border-black"></div>POPULAR PRODUCTS
-   <div class="flex-grow-1 border-top border-black"></div>
-   </span>
-
-
-
-    <div class="swiper mySwiper" data-aos="fade-down"  style="width: 100%; height: 30rem;">
-
-    <div class="swiper-wrapper">
-
-        <div class="swiper-slide">
-              {{-- card --}}
-        <div class="d-flex border rounded-4 shadow overflow-hidden" style="width: 100%; height: 30rem;">
-            <!-- Card image -->
-            <div class="flex-grow-0 bg-gray-100" style="width: 50%;">
-              <div class="swiper-zoom-container">
-              <img src="{{ asset('img/products/dryer.png') }}" class="w-100 h-100 rounded-start-4"  alt="image_product">
-              </div>
-            </div>
-            <!-- Card details -->
-            <div class="p-3 d-flex flex-column justify-content-between flex-grow-1 bg-gray-900 text-white">
-              <div>
-                <h5 class="fw-bold mb-5 mt-3 text-center text-yellow-300">Card Title</h5>
-                <p class="small text-white">This is a simple description using Bootstrap utilities.</p>
-              </div>
-              <a href="#" class="btn btn-warning w-100">BUY</a>
-            </div>
-          </div>
-      </div>
-
-      <div class="swiper-slide">
-          {{-- card --}}
-          <div class="d-flex border rounded-4 shadow overflow-hidden" style="width: 100%; height: 30rem;">
-            <!-- Card image -->
-              <div class="flex-grow-0 bg-gray-100" style="width: 50%;">
-                <div class="swiper-zoom-container">   
-                <img src="{{ asset('img/products/refrigerator.png') }}" class="w-100 h-100 rounded-start-4" alt="image_product">
-                </div>
-              </div>
-              <!-- Card details -->
-              <div class="p-3 d-flex flex-column justify-content-between flex-grow-1 bg-gray-900">
-                <div>
-                  <h5 class="fw-bold mb-5 mt-3 text-center text-yellow-300"> PANDORAS™ REFRIGERATOR</h5>
-                  <p class="small text-white">This is a simple description using Bootstrap utilities.</p>
-                </div>
-                <a href="#" class="btn btn-warning w-100">BUY</a>
-              </div>
-            </div>
-          </div>
-
-
-         <div class="swiper-slide">
-          {{-- card --}}
-          <div class="d-flex border rounded-4 shadow overflow-hidden" style="width: 100%; height: 30rem;">
-            <!-- Card image -->
-              <div class="flex-grow-0 bg-gray-100" style="width: 50%;">
-                <div class="swiper-zoom-container">   
-                <img src="{{ asset('img/products/electric-bicycle-7275274_1280.jpg') }}" class="w-100 h-100 rounded-start-4" alt="image_product">
-                </div>
-              </div>
-              <!-- Card details -->
-              <div class="p-3 d-flex flex-column justify-content-between flex-grow-1 bg-gray-900">
-                <div>
-                  <h5 class="fw-bold mb-5 mt-3 text-center text-yellow-300"> PANDORAS™ ELECTRIC BICYCLE</h5>
-                  <p class="small text-white">This is a simple description using Bootstrap utilities.</p>
-                </div>
-                <a href="#" class="btn btn-warning w-100">BUY</a>
-              </div>
-            </div>
-          </div>
-
-
-         <div class="swiper-slide">
-          {{-- card --}}
-          <div class="d-flex border rounded-4 shadow overflow-hidden" style="width: 100%; height: 30rem;">
-            <!-- Card image -->
-              <div class="flex-grow-0 bg-gray-100" style="width: 50%;">
-                <div class="swiper-zoom-container">   
-                <img src="{{ asset('img/products/electric-vehicle-2777195_1280.png') }}" class="w-100 h-100 rounded-start-4" alt="image_product">
-                </div>
-              </div>
-              <!-- Card details -->
-              <div class="p-3 d-flex flex-column justify-content-between flex-grow-1 bg-gray-900">
-                <div>
-                  <h5 class="fw-bold mb-5 mt-3 text-center text-yellow-300"> PANDORAS™ ELECTRIC GOLF BUGGY</h5>
-                  <p class="small text-white">This is a simple description using Bootstrap utilities.</p>
-                </div>
-                <a href="#" class="btn btn-warning w-100">BUY</a>
-              </div>
-            </div>
-          </div>
-          
-      </div>
-
-          {{-- pagination --}}
-          <div class="swiper-pagination"></div>
-
-          <!-- Add Navigation -->
-          <div class="swiper-button-next"></div>
-          <div class="swiper-button-prev"></div>
-
-      </div>
-      </section>
-
-      <section class="bg-gray-200 p-10" style="min-height: 90vh;">
-
-           <span class="d-block fs-2 text-center text-black fw-bold pb-5" data-aos="fade-right" data-aos-easing="linear" data-aos-duration="1500" >
-          <div class="flex-grow-1 border-top border-black"></div>CATEGORIES
-          <div class="flex-grow-1 border-top border-black"></div>
-          </span>
-
-
-          <div class="d-flex"> 
-
-            <div class="shadow" style="width: 20%; height: 10 rem">
-
+    {{-- services section --}}
+    <section id="services" class="section section-soft">
+        <div class="container">
+            <div class="network-line" data-aos="fade-down">
+                <div class="section-label mb-0">OUR SERVICES</div>
             </div>
 
-          </div>
+            <div class="text-center mb-5" data-aos="fade-up">
+                <h2 class="section-title">NFC SOLUTIONS FOR A SMARTER YOU</h2>
+                <p class="section-subtitle">
+                    One tap can connect people to the information they need — from your digital profile
+                    to emergency contact details.
+                </p>
+            </div>
 
+            <div class="row g-4">
+                {{-- Service 1 --}}
+                <div class="col-lg-4" data-aos="fade-up" data-aos-delay="0">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="bi bi-person-vcard"></i>
+                        </div>
+                        <h3>NFC Digital Portfolio</h3>
+                        <p>
+                            Tap an NFC card to instantly open a personalized digital profile,
+                            portfolio, contact page, or other online information.
+                        </p>
+                        <span class="service-arrow"><i class="bi bi-arrow-right"></i></span>
+                    </div>
+                </div>
 
-      </section>
+                {{-- Service 2 --}}
+                <div class="col-lg-4" data-aos="fade-up" data-aos-delay="120">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="bi bi-credit-card-2-front"></i>
+                        </div>
+                        <h3>NFC Business Card</h3>
+                        <p>
+                            Share your contact information through a single tap without relying
+                            on traditional paper business cards.
+                        </p>
+                        <span class="service-arrow"><i class="bi bi-arrow-right"></i></span>
+                    </div>
+                </div>
 
-        <section class="bg-gray-900 p-10" style="min-height: 60vh;" data-aos="fade-right" data-aos-easing="linear" data-aos-duration="1500" >
+                {{-- Service 3 --}}
+                <div class="col-lg-4" data-aos="fade-up" data-aos-delay="240">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="bi bi-shield-check"></i>
+                        </div>
+                        <h3>Child Lost Mode</h3>
+                        <p>
+                            Attach an NFC card or sticker to a child's belongings. If the child gets
+                            separated, a finder can tap the tag to access approved emergency contact information.
+                        </p>
+                        <span class="service-arrow"><i class="bi bi-arrow-right"></i></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-           <span class="d-block fs-2 text-center text-yellow-300 fw-bold pb-5">
-          <div class="flex-grow-1 border-top border-yellow-300"></div>
-              REVIEWS
-          <div class="flex-grow-1 border-top border-yellow-300"></div>
-          </span>
+    {{-- child lost mode section --}}
+    <section id="child-lost-mode" class="section lost-section">
+        <div class="container">
+            <div class="lost-wrapper" data-aos="fade-up" data-aos-duration="1000">
+                <div class="row g-0 align-items-stretch">
+                    <div class="col-lg-5">
+                        <div class="lost-visual">
+                            <div class="nfc-tag" aria-label="NFC tag illustration">
+                                <i class="bi bi-broadcast-pin"></i>
+                            </div>
 
+                            <div class="phone" aria-label="Child Lost Mode phone preview">
+                                <div class="phone-screen">
+                                    <div class="phone-nfc">
+                                        <i class="bi bi-broadcast-pin"></i>
+                                    </div>
+                                    <small>NFC Child Safety</small>
+                                    <h5>This child is lost</h5>
+                                    <p>Please contact the parent or guardian using the emergency contact below.</p>
+                                    <span class="phone-contact">
+                                        <i class="bi bi-telephone-fill me-1"></i> Contact Parent
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-      </section>
+                    <div class="col-lg-7">
+                        <div class="lost-content">
+                            <div class="section-label">CHILD LOST MODE</div>
+                            <h2>LOST? ONE TAP <span>CAN HELP.</span></h2>
+                            <p>
+                                A simple NFC card or sticker can give a finder a quick way to reach a
+                                child's parent or guardian when they become separated during trips,
+                                events, malls, parks, or other crowded places.
+                            </p>
 
+                            <div class="steps">
+                                <div class="step">
+                                    <div class="step-number">01</div>
+                                    <div>
+                                        <h4><i class="bi bi-tag me-1 text-warning"></i> Attach</h4>
+                                        <p>Place the NFC sticker or card on the child's bag, ID, clothing, or belongings.</p>
+                                    </div>
+                                </div>
 
- 
-  <button id="backToTop" class="btn btn-warning shadow" 
-        style="position: fixed; bottom: 40px; right: 40px; z-index: 1000; display: none;">
-       <i id="arrowUp" class="bi bi-arrow-up"></i>
-   </button>
+                                <div class="step">
+                                    <div class="step-number">02</div>
+                                    <div>
+                                        <h4><i class="bi bi-phone me-1 text-warning"></i> Tap</h4>
+                                        <p>If the child gets separated, a finder taps the NFC tag using a compatible smartphone.</p>
+                                    </div>
+                                </div>
+
+                                <div class="step">
+                                    <div class="step-number">03</div>
+                                    <div>
+                                        <h4><i class="bi bi-person-lines-fill me-1 text-warning"></i> Contact</h4>
+                                        <p>The approved emergency profile opens with the parent's selected contact information.</p>
+                                    </div>
+                                </div>
+
+                                <div class="step">
+                                    <div class="step-number">04</div>
+                                    <div>
+                                        <h4><i class="bi bi-people me-1 text-warning"></i> Reconnect</h4>
+                                        <p>The finder can contact the parent or guardian directly using the available contact option.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <a href="#how-it-works" class="btn btn-nfc-primary mt-3">
+                                Learn More <i class="bi bi-arrow-right ms-2"></i>
+                            </a>
+
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <p class="text-center mt-4 mb-0" style="color:#64748b;font-size:11px;">
+                <i class="bi bi-info-circle me-1"></i>
+                NFC provides access to the profile; it does not independently track a child's location.
+            </p>
+        </div>
+    </section>
+
+    {{-- how it works section --}}
+    <section id="how-it-works" class="section section-soft">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <div class="section-label">HOW IT WORKS</div>
+                <h2 class="section-title">ONE TAP. SIMPLE CONNECTION.</h2>
+                <p class="section-subtitle">
+                    NFC makes sharing approved information quick and straightforward.
+                </p>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="0">
+                    <div class="how-card">
+                        <div class="how-number">01</div>
+                        <div class="how-icon"><i class="bi bi-phone"></i></div>
+                        <h3>Bring a Phone Close</h3>
+                        <p>A compatible smartphone is brought near the NFC card or sticker.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="100">
+                    <div class="how-card">
+                        <div class="how-number">02</div>
+                        <div class="how-icon"><i class="bi bi-broadcast-pin"></i></div>
+                        <h3>Tap the NFC</h3>
+                        <p>The NFC tag communicates the information needed to open its linked profile.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="200">
+                    <div class="how-card">
+                        <div class="how-number">03</div>
+                        <div class="how-icon"><i class="bi bi-globe2"></i></div>
+                        <h3>Open the Profile</h3>
+                        <p>The linked web page opens without requiring the finder to install a dedicated app.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="300">
+                    <div class="how-card">
+                        <div class="how-number">04</div>
+                        <div class="how-icon"><i class="bi bi-person-check"></i></div>
+                        <h3>Connect</h3>
+                        <p>The visitor can use the available approved contact or information options.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {{-- About Section, why nfc --}}
+    <section id="about" class="section section-dark">
+        <div class="container">
+            <div class="about-panel" data-aos="fade-up">
+                <div class="row g-5 align-items-center">
+                    <div class="col-lg-8">
+                        <div class="section-label">WHY NFC?</div>
+                        <h2 class="section-title mb-4">MAKE YOUR INFORMATION<br>MORE CONNECTED.</h2>
+                        <p>
+                            Our NFC solutions turn a physical card or tag into a simple doorway to
+                            digital information. Whether it is a portfolio, business profile, or an
+                            emergency contact page, users can access the information through a quick tap.
+                        </p>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <div class="stat">
+                            <strong>01</strong>
+                            <span>Tap-to-open digital profile</span>
+                        </div>
+                        <div class="stat">
+                            <strong>02</strong>
+                            <span>Contactless information sharing</span>
+                        </div>
+                        <div class="stat">
+                            <strong>03</strong>
+                            <span>Emergency contact use case</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {{-- CTA Section --}}
+    <section id="contact" class="section cta-section">
+        <div class="container cta-content" data-aos="zoom-in">
+            <div class="section-label">READY TO CONNECT?</div>
+            <h2 class="cta-title">
+                TURN ONE TAP INTO A <span>CONNECTION.</span>
+            </h2>
+            <p class="section-subtitle mb-4">
+                Build your digital NFC profile or explore a safer way to keep emergency contact information accessible.
+            </p>
+
+            <div class="hero-actions">
+                <a href="{{ url('/contact') }}" class="btn btn-nfc-primary">
+                    Get Started <i class="bi bi-arrow-right ms-2"></i>
+                </a>
+                <a href="mailto:hello@example.com" class="btn btn-nfc-outline">
+                    Contact Us <i class="bi bi-envelope ms-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    {{-- footer --}}
+    <footer class="nfc-footer">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-6">
+                    <div class="footer-brand">PANDORAS<span>™</span></div>
+                    <p class="footer-text">
+                        Smart NFC solutions for digital identity, contactless information,
+                        and safer connections.
+                    </p>
+                </div>
+
+                <div class="col-6 col-lg-2">
+                    <div class="footer-heading">Explore</div>
+                    <a class="footer-link" href="#services">Services</a>
+                    <a class="footer-link" href="#child-lost-mode">Child Lost Mode</a>
+                    <a class="footer-link" href="#how-it-works">How It Works</a>
+                </div>
+
+                <div class="col-6 col-lg-2">
+                    <div class="footer-heading">Company</div>
+                    <a class="footer-link" href="#about">About</a>
+                    <a class="footer-link" href="#contact">Contact</a>
+                    <a class="footer-link" href="{{ url('login') }}">Login</a>
+                </div>
+
+                <div class="col-lg-2">
+                    <div class="footer-heading">Connect</div>
+                    <a class="footer-link" href="#contact"><i class="bi bi-envelope me-1"></i> Email</a>
+                    <a class="footer-link" href="#contact"><i class="bi bi-facebook me-1"></i> Facebook</a>
+                    <a class="footer-link" href="#contact"><i class="bi bi-instagram me-1"></i> Instagram</a>
+                </div>
+            </div>
+
+            <div class="footer-bottom d-flex flex-column flex-md-row justify-content-between gap-2">
+                <span>© {{ date('Y') }} PANDORAS™. All rights reserved.</span>
+                <span>SMART TECHNOLOGY FOR A SAFER TOMORROW.</span>
+            </div>
+        </div>
+    </footer>
+
+    {{-- Back to top --}}
+    <button id="backToTop" aria-label="Back to top">
+        <i class="bi bi-arrow-up"></i>
+    </button>
 
 
 
@@ -237,6 +414,8 @@ upBtn.addEventListener('mouseout',()=>{
   });  
 
 </script>
+
+
 
 
 
@@ -366,7 +545,7 @@ function eyeTogglePassword(inputId,eyeBtnId){
 <script>
 
 var typed = new Typed('#typed', {
-  strings: ['THE BOX.', 'THIS WORLD.'],
+  strings: ['SAFER CONNECTIONS.', 'BETTER EXPERIENCE.'],
   typeSpeed: 120,
   backSpeed: 120,
   loop: true,

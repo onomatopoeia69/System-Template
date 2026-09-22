@@ -1,6 +1,6 @@
     {{-- navbar --}}
-    <nav class="p-3 bg-gray-900">
-        <div class="container mx-auto flex items-center justify-between">
+    <nav id="mainNavbar" class="navbar navbar-expand-lg nfc-navbar">
+        <div class="container">
             
             {{-- logo --}}
             <div class="flex items-center space-x-4">
@@ -19,14 +19,10 @@
             <ul id="nav-links" class="hidden md:flex space-x-8 text-white font-bold text-base">
 
                 <li><a href="#products" class="hover:text-yellow-300">Products</a></li>
-                <li><a href="#" class="hover:text-yellow-300">Sale</a></li>
-                 <li><a href="#" class="hover:text-yellow-300">About</a></li>
-                <li><a href="#" class="hover:text-yellow-300">Contact Us</a></li>
-               
-             
-
-             {{-- livewire auth login component view. see.. views/livewire/auth/login --}}
-                <livewire:auth.login /> 
+                <li><a href="#services" class="hover:text-yellow-300">Services</a></li>
+                 <li><a href="#about" class="hover:text-yellow-300">About</a></li>
+                <li><a href="#contact" class="hover:text-yellow-300">Contact Us</a></li>
+                <li><a href="{{ url('login') }}" class="hover:text-yellow-300">Login</a></li>
             
             </ul>
         </div>
@@ -42,3 +38,5 @@
         </ul> --}}
     </nav>
     
+    {{-- livewire auth login component view. see.. views/livewire/auth/login --}}
+                <livewire:auth.login />                
