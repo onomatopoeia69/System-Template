@@ -4,13 +4,12 @@ namespace App\Livewire\User;
 
 use Livewire\Component;
 
-class Dashboard extends Component
+class Child extends Component
 {
-  
+
 
     public function render()
     {
-        return view('livewire.user.dashboard');
+        return view('livewire.user.child');
     }
-    
 }

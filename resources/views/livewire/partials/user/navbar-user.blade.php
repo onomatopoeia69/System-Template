@@ -29,7 +29,7 @@
 
         <div class="flex items-center gap-2">
 
-            <div class="w-9 h-9 rounded-full bg-violet-600
+            <div class="w-9 h-9 rounded-full bg-yellow-500
                         text-white flex items-center justify-center">
 
                 {{ strtoupper(substr(Auth::user()->first_name, 0, 1)) }}

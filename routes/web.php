@@ -63,6 +63,10 @@ Route::post('/logout', function () {
        return redirect()->route('home.index')->with('login_required', true);
 })->name('users.logout');
 
+
+//children
+Route::view('/children','users.child.children')->name('users.children');
+
 // Socials
 Route::get('/socials',[SocialsController::class,'index'])->name('socials.index');
 Route::post('/socials/store',[SocialsController::class,'store'])->name('socials.store');
@@ -71,6 +75,9 @@ Route::delete('/socials', [SocialsController::class, 'destroy'])->name('socials.
 
 
 });
+
+
+
 
 
 // admin

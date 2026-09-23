@@ -59,6 +59,14 @@
         <!-- ibabang bahagi -->
         <div class="absolute bottom-6 left-4 right-4">
 
+             <a href="{{ route('users.children') }}" wire:current="font-bold text-yellow-500"  class="w-full flex items-center gap-3 px-4 py-3
+                                   rounded-lg text-gray-600 hover:bg-gray-100 text-sm">
+             <i class="bi bi-person-arms-up""></i>
+                <span>Child Lost</span>
+            </a>
+ 
+
+             
             <form method="POST" action="/logout">
                 @csrf
 
