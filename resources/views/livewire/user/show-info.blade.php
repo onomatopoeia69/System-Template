@@ -38,6 +38,7 @@
                     </span>
                 </div>
 
+
             </div>
 
         @endif
@@ -73,6 +74,8 @@
                     {{ $child->name }}
                 </h2>
 
+                
+
                 @if ($child->date_of_birth)
 
                     <p class="mt-1 text-sm text-gray-500">
@@ -80,11 +83,12 @@
                     </p>
 
                 @endif
+                
 
             </div>
 
 
-            {{-- Identification --}}
+      
             <div class="mt-4 rounded-2xl bg-white p-6 shadow-sm">
 
                 <h3 class="flex items-center gap-2 text-lg font-semibold">
@@ -130,12 +134,19 @@
                         </p>
                     </div>
 
+                    <div>
+                    <p class="text-sm text-gray-500">Address</p>
+
+                    <p class="mt-1 font-medium text-gray-900">
+                        {{ $child->address ?: 'Not provided' }}
+                    </p>
+                </div>
+
                 </div>
 
             </div>
 
 
-            {{-- Medical Information --}}
             @if ($child->allergies || $child->medical_notes)
 
                 <div class="mt-4 rounded-2xl bg-white p-6 shadow-sm">
@@ -188,7 +199,6 @@
             @endif
 
 
-            {{-- Emergency Contact --}}
             <div class="mt-4 rounded-2xl bg-white p-6 shadow-sm">
 
                 <h3 class="flex items-center gap-2 text-lg font-semibold">
@@ -236,6 +246,7 @@
                                 href="tel:{{ $contact->phone }}"
                                 class="mt-4 flex w-full items-center justify-center gap-2 rounded-xl bg-red-600 px-4 py-3 font-semibold text-white hover:bg-red-700"
                             >
+                            
 
                                 <i
                                     data-lucide="phone"
@@ -245,6 +256,25 @@
                                 Call {{ $contact->phone }}
 
                             </a>
+                            <div class="flex items-center gap-3">
+                                <div class="h-px flex-1 bg-gray-300"></div>
+
+                                <span class="text-sm text-gray-500">or</span>
+
+                                <div class="h-px flex-1 bg-gray-300"></div>
+                            </div>
+                            <button 
+                                type="button"
+                                onclick="getLocation()"
+                                class="mt-4 flex w-full items-center justify-center gap-2 rounded-xl bg-blue-600 px-4 py-3 font-semibold text-white hover:bg-blue-700"
+                            >
+                             <i
+                                    data-lucide="locate-fixed"
+                                    class="h-5 w-5"
+                                ></i>
+
+                                Share Location
+                            </button>
 
                         </div>
 
@@ -254,8 +284,6 @@
 
             </div>
 
-
-            {{-- NFC Information --}}
             <div class="mt-4 pb-8 text-center">
 
                 <div class="flex items-center justify-center gap-2 text-xs text-gray-400">
@@ -276,3 +304,49 @@
     @endif
 
 </div>
+
+
+@script
+<script>
+    window.getLocation = function () {
+
+        if (!navigator.geolocation) {
+            alert('Geolocation is not supported by this browser.');
+            return;
+        }
+
+        navigator.geolocation.getCurrentPosition(
+            function (position) {
+
+                const latitude = position.coords.latitude;
+                const longitude = position.coords.longitude;
+
+                console.log('Latitude:', latitude);
+                console.log('Longitude:', longitude);
+
+                $wire.updateLocation(latitude, longitude);
+            },
+
+            function (error) {
+
+                if (error.code === error.PERMISSION_DENIED) {
+                    alert('Location permission was denied.');
+                } else if (error.code === error.POSITION_UNAVAILABLE) {
+                    alert('Location information is unavailable.');
+                } else if (error.code === error.TIMEOUT) {
+                    alert('Location request timed out.');
+                } else {
+                    alert('Unable to get your location.');
+                }
+
+            },
+
+            {
+                enableHighAccuracy: true,
+                timeout: 10000,
+                maximumAge: 0
+            }
+        );
+    };
+</script>
+@endscript

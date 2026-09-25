@@ -20,12 +20,19 @@ class ChildTable extends Component
     {
         $this->resetPage();
     }
+    
 
 
     public function viewChild($id)
     {
         $this->dispatch('view-child', id: $id);
     }   
+
+    public function openLocation($childId)
+    {
+        $this->dispatch('open-child-location', childId: $childId);
+    }
+
 
     public function toggleLostMode($childId)
     {
@@ -74,7 +81,7 @@ class ChildTable extends Component
 
         $children = ChildProfile::query()
             ->with([
-                'nfcTag',
+                'nfcTag.scans',
                 'emergencyContacts',
             ])
             ->when($this->search, function ($query) {

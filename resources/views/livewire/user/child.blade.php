@@ -37,5 +37,8 @@
     {{-- view modal --}}
     <livewire:modal.child.view>
 
+    {{-- street modal --}}
+    <livewire:modal.child.open-street>
+
 </div>
 

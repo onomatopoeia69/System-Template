@@ -12,6 +12,8 @@ class Child extends Component
         $this->dispatch('open-add-child');
     }       
 
+    
+
     public function render()
     {
         return view('livewire.user.child');

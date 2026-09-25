@@ -219,73 +219,89 @@
             </div>
 
 
-            {{-- NFC --}}
-            <div>
 
-                <h3 class="mb-3 text-sm font-semibold text-gray-900">
-                    NFC Tag
-                </h3>
+            {{-- test --}}
+        @php
+            $publicUrl = route('child.show', [
+                'token' => $child->nfcTag->public_token
+            ]);
+        @endphp
 
-                @if ($child->nfcTag)
+<div>
+    <h3 class="mb-3 text-sm font-semibold text-gray-900">
+        QR CODE
+    </h3>
 
-                    <div class="rounded-xl border p-4">
+    @if ($child->nfcTag)
 
-                        <div class="flex items-center justify-between">
+        <div class="rounded-xl border p-4">
 
-                            <div>
-                                <p class="text-xs text-gray-500">
-                                    Tag UID
-                                </p>
+            <div class="flex flex-col items-center">
 
-                                <p class="mt-1 font-mono text-sm font-medium text-gray-900">
-                                    {{ $child->nfcTag->tag_uid }}
-                                </p>
-                            </div>
+                {{-- QR Code --}}
+                <div class="rounded-xl border bg-white p-3">
+                    <img
+                        src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data={{ urlencode($publicUrl) }}"
+                        alt="QR Code"
+                        class="h-48 w-48"
+                    >
+                </div>
 
-                            @if ($child->nfcTag->status)
+                {{-- Tag information --}}
+                <div class="mt-4 w-full">
 
-                                <span class="rounded-full bg-green-50 px-2.5 py-1 text-xs font-medium text-green-600">
-                                    Active
-                                </span>
+                    <div class="flex items-center justify-between">
 
-                            @else
+                        <div>
+                            <p class="text-xs text-gray-500">
+                                Tag UID
+                            </p>
 
-                                <span class="rounded-full bg-gray-100 px-2.5 py-1 text-xs font-medium text-gray-500">
-                                    Inactive
-                                </span>
-
-                            @endif
-
+                            <p class="mt-1 font-mono text-sm font-medium text-gray-900">
+                                {{ $child->nfcTag->tag_uid }}
+                            </p>
                         </div>
 
-                        <div class="mt-4">
+                        @if ($child->nfcTag->status)
 
-                            <a
-                                href="#"
-                                target="_blank"
-                                class="inline-flex items-center gap-2 rounded-lg bg-gray-900 px-4 py-2 text-sm font-medium text-white hover:bg-gray-800"
-                            >
-                                <i
-                                    data-lucide="external-link"
-                                    class="h-4 w-4"
-                                ></i>
+                            <span class="rounded-full bg-green-50 px-2.5 py-1 text-xs font-medium text-green-600">
+                                Active
+                            </span>
 
-                                Open Public Profile
-                            </a>
+                        @else
 
-                        </div>
+                            <span class="rounded-full bg-gray-100 px-2.5 py-1 text-xs font-medium text-gray-500">
+                                Inactive
+                            </span>
+
+                        @endif
 
                     </div>
 
-                @else
+                </div>
 
-                    <p class="text-sm text-gray-500">
-                        No NFC tag assigned.
-                    </p>
-
-                @endif
+                {{-- Open public profile --}}
+                <a
+                    href="{{ $publicUrl }}"
+                    target="_blank"
+                    class="mt-4 inline-flex items-center gap-2 rounded-lg bg-gray-900 px-4 py-2 text-sm font-medium text-white hover:bg-gray-800"
+                >
+                    <i data-lucide="external-link" class="h-4 w-4"></i>
+                    Open Public Profile
+                </a>
 
             </div>
+
+        </div>
+
+            @else
+
+                <p class="text-sm text-gray-500">
+                    No NFC tag assigned.
+                </p>
+
+            @endif
+        </div>
 
 
             {{-- Recent Scans --}}

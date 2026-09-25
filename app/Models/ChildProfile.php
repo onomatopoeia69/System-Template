@@ -15,6 +15,7 @@ class ChildProfile extends Model
         'user_id',
         'name',
         'photo',
+        'address',
         'date_of_birth',
         'gender',
         'blood_type',

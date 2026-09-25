@@ -35,6 +35,7 @@ class Add extends Component
     public string $allergies = '';
     public string $medical_notes = '';
 
+    public string $address = '';
  
 
     public string $emergency_name = '';
@@ -131,6 +132,8 @@ class Add extends Component
                 'max:255',
                 'unique:child_nfc_tags,tag_uid',
             ],
+
+            'address' => ['nullable', 'string', 'max:1000'],
         ];
     }
 
@@ -160,6 +163,8 @@ class Add extends Component
                 'name' => $validated['name'],
 
                 'photo' => $photoPath,
+
+                'address' => $validated['address'] ?: null,
 
                 'date_of_birth' =>
                     $validated['date_of_birth'] ?: null,
@@ -234,6 +239,7 @@ class Add extends Component
             'date_of_birth',
             'gender',
             'blood_type',
+            'address',
             'allergies',
             'medical_notes',
             'emergency_name',

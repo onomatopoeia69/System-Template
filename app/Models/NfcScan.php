@@ -16,6 +16,9 @@ class NfcScan extends Model
         'ip_address',
         'user_agent',
         'scanned_at',
+        'latitude',
+        'longitude',
+        'address',
     ];
 
     protected $casts = [

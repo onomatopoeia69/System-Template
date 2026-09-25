@@ -17,7 +17,7 @@ class ChildController extends Controller
         ->where('status', true)
         ->firstOrFail();
 
-        NfcScan::create([
+        $scan = NfcScan::create([
             'nfc_tag_id' => $tag->id,
             'ip_address' => request()->ip(),
             'user_agent' => request()->userAgent(),
@@ -26,6 +26,6 @@ class ChildController extends Controller
 
         $child = $tag->child;
 
-        return view('users.child.show', compact('child'));
+        return view('users.child.show', compact('child', 'scan'));
     }
 }

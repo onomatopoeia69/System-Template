@@ -18,7 +18,7 @@
 @section('content')
 
 
-<livewire:user.show-info :child="$child">
+<livewire:user.show-info :child="$child" :scan="$scan">
 
 @section('body-script')
 

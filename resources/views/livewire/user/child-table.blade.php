@@ -28,8 +28,6 @@
 
     </div>
 
-
-    {{-- Table --}}
     <div class="overflow-hidden rounded-xl border border-slate-200 bg-white">
 
         <div class="overflow-x-auto">
@@ -63,7 +61,7 @@
                 </thead>
 
 
-                <tbody class="divide-y divide-slate-100">
+                <tbody class="divide-y divide-slate-100" wire:poll.5s='refreshTable'>
 
                     @forelse($children as $child)
 
@@ -217,7 +215,7 @@
                                     @if($child->nfcTag)
 
                                         <a
-                                            href="#"
+                                            href="{{ route('child.show',['token' => $child->nfcTag->public_token]) }}"
                                             target="_blank"
                                             class="rounded-lg p-2 text-slate-500 hover:bg-indigo-50 hover:text-indigo-600"
                                             title="Open Tag Link"
@@ -251,6 +249,24 @@
                                         <i data-lucide="trash" class="h-4 w-4"></i>
                                             
                                     </button>
+
+
+
+                                       @if (
+                                            $child->nfcTag &&
+                                            $child->nfcTag->scans->contains(function ($scan) {
+                                                return $scan->latitude !== null &&
+                                                    $scan->longitude !== null;
+                                            })
+                                        )
+                                            <button
+                                                wire:click="openLocation({{ $child->id }})"
+                                                title="View Location"
+                                                class="rounded-lg p-2 text-slate-500 hover:bg-indigo-50 hover:text-indigo-600"
+                                            >
+                                                <i data-lucide="map-pin" class="h-4 w-4"></i>
+                                            </button>
+                                        @endif 
 
                                 </div>
 
