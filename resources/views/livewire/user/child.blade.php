@@ -34,7 +34,8 @@
     {{-- add modal --}}
      <livewire:modal.child.add>
 
-
+    {{-- view modal --}}
+    <livewire:modal.child.view>
 
 </div>
 

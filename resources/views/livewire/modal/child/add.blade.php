@@ -38,10 +38,7 @@
 
                     <div class="space-y-8 p-6">
 
-                        {{-- ================================================== --}}
-                        {{-- CHILD INFORMATION --}}
-                        {{-- ================================================== --}}
-
+                 
                         <section>
 
                             <div class="mb-5 flex items-center gap-3">
@@ -148,8 +145,6 @@
 
                                 </div>
 
-
-                                {{-- Date of Birth --}}
                                 <div>
 
                                     <label class="mb-2 block text-sm font-medium text-slate-700">
@@ -170,8 +165,6 @@
 
                                 </div>
 
-
-                                {{-- Gender --}}
                                 <div>
 
                                     <label class="mb-2 block text-sm font-medium text-slate-700">
@@ -230,10 +223,6 @@
 
                         </section>
 
-
-                        {{-- ================================================== --}}
-                        {{-- MEDICAL INFORMATION --}}
-                        {{-- ================================================== --}}
 
                         <section class="border-t border-slate-200 pt-7">
 
@@ -310,10 +299,6 @@
 
                         </section>
 
-
-                        {{-- ================================================== --}}
-                        {{-- EMERGENCY CONTACT --}}
-                        {{-- ================================================== --}}
 
                         <section class="border-t border-slate-200 pt-7">
 
@@ -419,11 +404,6 @@
 
                         </section>
 
-
-                        {{-- ================================================== --}}
-                        {{-- NFC TAG --}}
-                        {{-- ================================================== --}}
-
                         <section class="border-t border-slate-200 pt-7">
 
                             <div class="mb-5 flex items-center gap-3">
@@ -452,7 +432,6 @@
 
                                 <div class="grid grid-cols-1 gap-5 md:grid-cols-2">
 
-                                    {{-- Tag UID --}}
                                     <div>
 
                                         <label class="mb-2 block text-sm font-medium text-slate-700">
@@ -521,11 +500,6 @@
                         </section>
 
                     </div>
-
-
-                    {{-- ====================================================== --}}
-                    {{-- FOOTER --}}
-                    {{-- ====================================================== --}}
 
                     <div class="sticky bottom-0 flex items-center justify-end gap-3 border-t border-slate-200 bg-white px-6 py-4">
 

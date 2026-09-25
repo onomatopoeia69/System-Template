@@ -1,404 +1,316 @@
-<div>
-     <div class="bg-white border border-slate-200 rounded-xl">
+<div class="space-y-4">
 
-        {{-- Card Header --}}
-        <div class="px-6 py-5 border-b border-slate-200">
+    {{-- Filters --}}
+    <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
 
-            <div class="flex flex-col lg:flex-row lg:items-center
-                        lg:justify-between gap-4">
+        <div class="relative w-full sm:max-w-sm">
+            <i
+                data-lucide="search"
+                class="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400"
+            ></i>
 
-                <div>
-                    <div class="flex items-center gap-2">
+            <input
+                type="text"
+                wire:model.live="search"
+                placeholder="Search child..."
+                class="w-full rounded-lg border-slate-300 py-2.5 pl-9 pr-3 text-sm focus:border-indigo-500 focus:ring-indigo-500"
+            >
+        </div>
 
-                        <div class="flex items-center justify-center
-                                    w-8 h-8 rounded-lg bg-indigo-50">
+        <select
+            wire:model.live="status"
+            class="rounded-lg border-slate-300 px-3 py-2.5 text-sm"
+        >
+            <option value="all">All Children</option>
+            <option value="normal">Normal</option>
+            <option value="lost">Lost Mode</option>
+        </select>
 
-                            <i data-lucide="baby"
-                               class="w-4 h-4 text-indigo-600"></i>
-
-                        </div>
-
-                        <h2 class="text-base font-semibold text-slate-900">
-                            Children
-                        </h2>
-
-                    </div>
-
-                    <p class="mt-1 text-sm text-slate-500">
-                        Manage child profiles and their NFC tags.
-                    </p>
-                </div>
-
-
-                {{-- Search + Filter --}}
-                <div class="flex items-center gap-3">
-
-                    <div class="relative">
-
-                        <i data-lucide="search"
-                           class="absolute left-3 top-1/2
-                                  -translate-y-1/2
-                                  w-4 h-4 text-slate-400"></i>
-
-                        <input
-                            type="text"
-                            placeholder="Search children..."
-                            class="w-64 rounded-lg border border-slate-200
-                                   bg-white py-2.5 pl-9 pr-3
-                                   text-sm text-slate-700
-                                   placeholder:text-slate-400
-                                   focus:border-indigo-500
-                                   focus:ring-2 focus:ring-indigo-100
-                                   outline-none"
-                        >
-
-                    </div>
+    </div>
 
 
-                    <select
-                        class="rounded-lg border border-slate-200
-                               bg-white px-3 py-2.5
-                               text-sm text-slate-600
-                               focus:border-indigo-500
-                               focus:ring-2 focus:ring-indigo-100
-                               outline-none"
-                    >
-                        <option>All Status</option>
-                        <option>Normal</option>
-                        <option>Lost Mode</option>
-                    </select>
+    {{-- Table --}}
+    <div class="overflow-hidden rounded-xl border border-slate-200 bg-white">
 
-                </div>
+        <div class="overflow-x-auto">
 
-            </div>
+            <table class="min-w-full text-sm">
+
+                <thead class="border-b border-slate-200 bg-slate-50">
+                    <tr>
+
+                        <th class="px-5 py-3 text-left font-semibold text-slate-600">
+                            Child
+                        </th>
+
+                        <th class="px-5 py-3 text-left font-semibold text-slate-600">
+                            Emergency Contact
+                        </th>
+
+                        <th class="px-5 py-3 text-left font-semibold text-slate-600">
+                            NFC Tag
+                        </th>
+
+                        <th class="px-5 py-3 text-left font-semibold text-slate-600">
+                            Status
+                        </th>
+
+                        <th class="px-5 py-3 text-right font-semibold text-slate-600">
+                            Actions
+                        </th>
+
+                    </tr>
+                </thead>
+
+
+                <tbody class="divide-y divide-slate-100">
+
+                    @forelse($children as $child)
+
+                        <tr class="hover:bg-slate-50">
+
+                            {{-- Child --}}
+                            <td class="px-5 py-4">
+
+                                <div class="flex items-center gap-3">
+                                    @if($child->photo)
+
+                                        <img
+                                            src="{{ Storage::url($child->photo) }}"
+                                            class="h-10 w-10 rounded-full object-cover"
+                                        >
+
+                                    @else
+
+                                        <div class="flex h-10 w-10 items-center justify-center rounded-full bg-indigo-50">
+                                            <i
+                                                data-lucide="user"
+                                                class="h-5 w-5 text-indigo-500"
+                                            ></i>
+                                        </div>
+
+                                    @endif
+
+                                    <div>
+                                        <p class="font-medium text-slate-800">
+                                            {{ $child->name }}
+                                        </p>
+
+                                        <p class="text-xs text-slate-400">
+                                            {{ $child->gender ?? '—' }}
+                                        </p>
+                                    </div>
+
+                                </div>
+
+                            </td>
+
+
+                            {{-- Emergency Contact --}}
+                            <td class="px-5 py-4">
+
+                                @php
+                                    $primaryContact = $child->emergencyContacts
+                                        ->firstWhere('is_primary', true)
+                                        ?? $child->emergencyContacts->first();
+                                @endphp
+
+                                @if($primaryContact)
+
+                                    <p class="font-medium text-slate-700">
+                                        {{ $primaryContact->name }}
+                                    </p>
+
+                                    <p class="text-xs text-slate-400">
+                                        {{ $primaryContact->relationship }}
+                                        ·
+                                        {{ $primaryContact->phone }}
+                                    </p>
+
+                                @else
+
+                                    <span class="text-slate-400">
+                                        No contact
+                                    </span>
+
+                                @endif
+
+                            </td>
+
+                            <td class="px-5 py-4">
+
+                                @if($child->nfcTag)
+
+                                    <div class="flex items-center gap-2">
+
+                                        <div class="flex h-8 w-8 items-center justify-center rounded-lg bg-indigo-50">
+                                            <i
+                                                data-lucide="radio"
+                                                class="h-4 w-4 text-indigo-600"
+                                            ></i>
+                                        </div>
+
+                                        <div>
+                                            <p class="font-medium text-slate-700">
+                                                {{ $child->nfcTag->tag_uid }}
+                                            </p>
+
+                                            <p class="text-xs text-slate-400">
+                                                {{ $child->nfcTag->status ? 'Active' : 'Inactive' }}
+                                            </p>
+                                        </div>
+
+                                    </div>
+
+                                @else
+
+                                    <span class="text-slate-400">
+                                        No NFC tag
+                                    </span>
+
+                                @endif
+
+                            </td>
+
+
+                            <td class="px-5 py-4">
+
+                                @if($child->lost_mode)
+
+                                  
+                                     <span class="inline-flex items-center gap-1 rounded-full bg-red-50 px-2.5 py-1 text-xs font-medium text-red-600">
+                                        <span class="h-1.5 w-1.5 rounded-full bg-red-500"></span>
+                                        Lost
+                                    </span>
+
+
+                                @else
+
+                                    <span class="inline-flex items-center gap-1 rounded-full bg-green-50 px-2.5 py-1 text-xs font-medium text-green-600">
+                                        <span class="h-1.5 w-1.5 rounded-full bg-green-500"></span>
+                                        Normal
+                                    </span>
+
+                                @endif
+
+                            </td>
+
+                            <td class="px-5 py-4">
+
+                                <div class="flex justify-end gap-1">
+
+                                    {{-- View --}}
+                                    <button
+                                        type="button"
+                                        wire:click="viewChild({{ $child->id }})"
+                                        class="rounded-lg p-2 text-slate-500 hover:bg-slate-100 hover:text-indigo-600"
+                                        title="View"
+                                    >
+                                        <i
+                                            data-lucide="eye"
+                                            class="h-4 w-4"
+                                        ></i>
+                                    </button>
+
+
+                                    {{-- Tag Link --}}
+                                    @if($child->nfcTag)
+
+                                        <a
+                                            href="#"
+                                            target="_blank"
+                                            class="rounded-lg p-2 text-slate-500 hover:bg-indigo-50 hover:text-indigo-600"
+                                            title="Open Tag Link"
+                                        >
+                                            <i data-lucide="external-link" class="h-4 w-4"></i>
+                                        </a>
+
+                                    @endif
+
+
+                                         <button
+                                            title="{{ $child->lost_mode ? 'Turn Off Lost Mode' : 'Activate Lost Mode' }}"
+                                            wire:click="toggleLostMode({{ $child->id }})"
+                                             class="rounded-lg p-2 text-slate-500 hover:bg-indigo-50 hover:text-indigo-600"
+                                        >
+                       
+                                        <i
+                                            data-lucide="{{ $child->lost_mode ? 'triangle-alert' : 'shield-alert' }}"
+                                            class="h-4 w-4 {{ $child->lost_mode ? 'text-red-500' : 'text-green-500' }}"
+                                        ></i>
+                                            
+                                        </button>
+
+
+                                        <button
+                                            title="remove"
+                                            wire:click="deleteChild({{ $child->id }})"
+                                           class="rounded-lg p-2 text-slate-500 hover:bg-indigo-50 hover:text-indigo-600"
+                                        >
+                       
+                                        <i data-lucide="trash" class="h-4 w-4"></i>
+                                            
+                                    </button>
+
+                                </div>
+
+                            </td>
+
+                        </tr>
+
+                    @empty
+
+                        <tr>
+                            <td
+                                colspan="5"
+                                class="px-5 py-12 text-center"
+                            >
+                                <div class="flex flex-col items-center">
+
+                                    <i
+                                        data-lucide="users"
+                                        class="mb-3 h-10 w-10 text-slate-300"
+                                    ></i>
+
+                                    <p class="font-medium text-slate-600">
+                                        No children found
+                                    </p>
+
+                                    <p class="mt-1 text-sm text-slate-400">
+                                        Add a child to get started.
+                                    </p>
+
+                                </div>
+                            </td>
+                        </tr>
+
+                    @endforelse
+
+                </tbody>
+
+            </table>
 
         </div>
 
 
-        {{-- Children List --}}
-        <div class="divide-y divide-slate-100">
+        @if($children->hasPages())
 
-
-            {{-- Child 1 --}}
-            <div class="px-6 py-5 hover:bg-slate-50 transition">
-
-                <div class="flex flex-col lg:flex-row
-                            lg:items-center gap-5">
-
-                    {{-- Photo --}}
-                    <div class="shrink-0">
-
-                        <div class="w-14 h-14 rounded-full
-                                    bg-indigo-100 overflow-hidden
-                                    flex items-center justify-center">
-
-                            <i data-lucide="user"
-                               class="w-6 h-6 text-indigo-500"></i>
-
-                        </div>
-
-                    </div>
-
-
-                    {{-- Child Information --}}
-                    <div class="flex-1 min-w-0">
-
-                        <div class="flex items-center gap-2">
-
-                            <h3 class="text-sm font-semibold
-                                       text-slate-900">
-                                Juan Dela Cruz
-                            </h3>
-
-                            <span
-                                class="inline-flex items-center gap-1
-                                       rounded-full bg-emerald-50
-                                       px-2 py-1 text-xs
-                                       font-medium text-emerald-600"
-                            >
-                                <span class="w-1.5 h-1.5 rounded-full
-                                             bg-emerald-500"></span>
-                                Active
-                            </span>
-
-                        </div>
-
-                        <p class="mt-1 text-sm text-slate-500">
-                            8 years old · Male
-                        </p>
-
-                        <div class="flex flex-wrap items-center gap-4
-                                    mt-3 text-xs text-slate-500">
-
-                            <span class="inline-flex items-center gap-1.5">
-                                <i data-lucide="radio"
-                                   class="w-3.5 h-3.5"></i>
-                                NFC Tag Active
-                            </span>
-
-                            <span class="inline-flex items-center gap-1.5">
-                                <i data-lucide="scan-line"
-                                   class="w-3.5 h-3.5"></i>
-                                Last scan: Today, 1:20 PM
-                            </span>
-
-                        </div>
-
-                    </div>
-
-
-                    {{-- Lost Mode --}}
-                    <div class="lg:w-32">
-
-                        <p class="text-xs text-slate-400 mb-1">
-                            Lost Mode
-                        </p>
-
-                        <span
-                            class="inline-flex items-center gap-1.5
-                                   rounded-full bg-slate-100
-                                   px-2.5 py-1
-                                   text-xs font-medium text-slate-600"
-                        >
-                            <span class="w-1.5 h-1.5 rounded-full
-                                         bg-slate-400"></span>
-                            Off
-                        </span>
-
-                    </div>
-
-
-                    {{-- Actions --}}
-                    <div class="flex items-center gap-2">
-
-                        <button
-                            class="inline-flex items-center gap-1.5
-                                   rounded-lg border border-slate-200
-                                   bg-white px-3 py-2
-                                   text-xs font-medium text-slate-600
-                                   hover:bg-slate-50 transition"
-                        >
-                            <i data-lucide="eye"
-                               class="w-3.5 h-3.5"></i>
-                            View
-                        </button>
-
-                        <button
-                            class="inline-flex items-center justify-center
-                                   w-9 h-9 rounded-lg
-                                   border border-slate-200
-                                   text-slate-500
-                                   hover:bg-slate-50 transition"
-                        >
-                            <i data-lucide="more-horizontal"
-                               class="w-4 h-4"></i>
-                        </button>
-
-                    </div>
-
-                </div>
-
+            <div class="border-t border-slate-200 px-5 py-3">
+                {{ $children->links() }}
             </div>
 
+        @endif
 
-            {{-- Child 2 --}}
-            <div class="px-6 py-5 hover:bg-slate-50 transition">
+    </div>
 
-                <div class="flex flex-col lg:flex-row
-                            lg:items-center gap-5">
-
-                    <div class="shrink-0">
-
-                        <div class="w-14 h-14 rounded-full
-                                    bg-pink-100 overflow-hidden
-                                    flex items-center justify-center">
-
-                            <i data-lucide="user"
-                               class="w-6 h-6 text-pink-500"></i>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="flex-1 min-w-0">
-
-                        <div class="flex items-center gap-2">
-
-                            <h3 class="text-sm font-semibold
-                                       text-slate-900">
-                                Maria Santos
-                            </h3>
-
-                            <span
-                                class="inline-flex items-center gap-1
-                                       rounded-full bg-emerald-50
-                                       px-2 py-1 text-xs
-                                       font-medium text-emerald-600"
-                            >
-                                <span class="w-1.5 h-1.5 rounded-full
-                                             bg-emerald-500"></span>
-                                Active
-                            </span>
-
-                        </div>
-
-                        <p class="mt-1 text-sm text-slate-500">
-                            10 years old · Female
-                        </p>
-
-                        <div class="flex flex-wrap items-center gap-4
-                                    mt-3 text-xs text-slate-500">
-
-                            <span class="inline-flex items-center gap-1.5">
-                                <i data-lucide="radio"
-                                   class="w-3.5 h-3.5"></i>
-                                NFC Tag Active
-                            </span>
-
-                            <span class="inline-flex items-center gap-1.5">
-                                <i data-lucide="scan-line"
-                                   class="w-3.5 h-3.5"></i>
-                                Last scan: Today, 2:15 PM
-                            </span>
-
-                        </div>
-
-                    </div>
-
-
-                    {{-- Lost Mode --}}
-                    <div class="lg:w-32">
-
-                        <p class="text-xs text-slate-400 mb-1">
-                            Lost Mode
-                        </p>
-
-                        <span
-                            class="inline-flex items-center gap-1.5
-                                   rounded-full bg-red-50
-                                   px-2.5 py-1
-                                   text-xs font-medium text-red-600"
-                        >
-                            <span class="w-1.5 h-1.5 rounded-full
-                                         bg-red-500"></span>
-                            Active
-                        </span>
-
-                    </div>
-
-
-                    <div class="flex items-center gap-2">
-
-                        <button
-                            class="inline-flex items-center gap-1.5
-                                   rounded-lg border border-slate-200
-                                   bg-white px-3 py-2
-                                   text-xs font-medium text-slate-600
-                                   hover:bg-slate-50 transition"
-                        >
-                            <i data-lucide="eye"
-                               class="w-3.5 h-3.5"></i>
-                            View
-                        </button>
-
-                        <button
-                            class="inline-flex items-center justify-center
-                                   w-9 h-9 rounded-lg
-                                   border border-slate-200
-                                   text-slate-500
-                                   hover:bg-slate-50 transition"
-                        >
-                            <i data-lucide="more-horizontal"
-                               class="w-4 h-4"></i>
-                        </button>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            {{-- Empty state example --}}
-            {{-- 
-            <div class="px-6 py-16 text-center">
-
-                <div class="mx-auto flex items-center justify-center
-                            w-12 h-12 rounded-xl bg-slate-100">
-
-                    <i data-lucide="baby"
-                       class="w-6 h-6 text-slate-400"></i>
-
-                </div>
-
-                <h3 class="mt-4 text-sm font-semibold text-slate-900">
-                    No children yet
-                </h3>
-
-                <p class="mt-1 text-sm text-slate-500">
-                    Add a child to start using Child Lost Mode.
-                </p>
-
-                <button
-                    class="mt-5 inline-flex items-center gap-2
-                           rounded-lg bg-indigo-600
-                           px-4 py-2.5 text-sm font-medium text-white"
-                >
-                    <i data-lucide="plus" class="w-4 h-4"></i>
-                    Add Child
-                </button>
-
-            </div>
-            --}}
-
-        </div>
-
-
-        {{-- Footer --}}
-        <div class="flex items-center justify-between
-                    px-6 py-4 border-t border-slate-200">
-
-            <p class="text-xs text-slate-500">
-                Showing 2 of 2 children
-            </p>
-
-            <div class="flex items-center gap-1">
-
-                <button
-                    class="flex items-center justify-center
-                           w-8 h-8 rounded-lg
-                           border border-slate-200
-                           text-slate-400"
-                    disabled
-                >
-                    <i data-lucide="chevron-left"
-                       class="w-4 h-4"></i>
-                </button>
-
-                <button
-                    class="flex items-center justify-center
-                           w-8 h-8 rounded-lg
-                           bg-indigo-600 text-white
-                           text-xs font-medium"
-                >
-                    1
-                </button>
-
-                <button
-                    class="flex items-center justify-center
-                           w-8 h-8 rounded-lg
-                           border border-slate-200
-                           text-slate-500
-                           hover:bg-slate-50"
-                >
-                    <i data-lucide="chevron-right"
-                       class="w-4 h-4"></i>
-                </button>
-
-            </div>
-
-            </div>  
-
-   </div>
 </div>
+
+ @script
+    <script>
+        $wire.on('init-lucide', () => {
+            setTimeout(() => {
+                lucide.createIcons();
+            }, 50);
+        });
+    </script>
+    @endscript

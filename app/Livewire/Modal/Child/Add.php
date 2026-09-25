@@ -215,11 +215,8 @@ class Add extends Component
 
         $this->resetForm();
 
-     
-
         $this->dispatch('child-added');
 
-    
         $this->dispatch('swal', [
             'title' => 'Child Added!',
             'text' =>

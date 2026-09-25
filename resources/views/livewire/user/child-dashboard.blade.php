@@ -11,7 +11,7 @@
             </p>
             <div class="mt-1 flex items-baseline gap-2">
                 <h2 class="text-3xl font-bold tracking-tight text-slate-900">
-                3
+               {{ $totalChildren }}
                 </h2>
             </div>
             </div>
@@ -32,7 +32,7 @@
             </p>
             <div class="mt-1 flex items-baseline gap-2">
                 <h2 class="text-3xl font-bold tracking-tight text-slate-900">
-                3
+                 {{ $activeTags }}
                 </h2>
             </div>
             </div>
@@ -53,7 +53,7 @@
             </p>
             <div class="mt-1 flex items-baseline gap-2">
                 <h2 class="text-3xl font-bold tracking-tight text-slate-900">
-                3
+                 {{ $lostChildren }}
                 </h2>
             </div>
             </div>
@@ -73,7 +73,7 @@
             </p>
             <div class="mt-1 flex items-baseline gap-2">
                 <h2 class="text-3xl font-bold tracking-tight text-slate-900">
-                3
+                  {{ $totalScans }}
                 </h2>
             </div>
             </div>
@@ -89,3 +89,14 @@
     </div>
 
 </div>
+
+
+ @script
+    <script>
+        $wire.on('init-lucide', () => {
+            setTimeout(() => {
+                lucide.createIcons();
+            }, 50);
+        });
+    </script>
+    @endscript

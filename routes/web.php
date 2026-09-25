@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\Auth\FacebookAuthController;
 use App\Http\Controllers\Auth\GoogleAuthController;
-use App\Http\Controllers\{ProductController,SocialsController};
+use App\Http\Controllers\{ChildController, ProductController,SocialsController};
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -32,6 +32,10 @@ Route::get('/auth/google/callback', [GoogleAuthController::class, 'callback'])->
 
 Route::get('/auth/facebook',[FacebookAuthController::class,'redirect'])->name('facebook.redirect');
 Route::get('/auth/facebook/callback',[FacebookAuthController::class,'callback'])->name('facebook.callback');
+
+
+// children public route
+Route::get('/child/{token}', [ChildController::class, 'show'])->name('child.show');
 
 });
 
