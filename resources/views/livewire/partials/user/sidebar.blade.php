@@ -1,5 +1,5 @@
 <aside id="sidebar"
-    class="fixed top-0 left-0 z-[60] w-64 h-screen bg-white border-r border-gray-200 transition-transform">
+    class="fixed top-0 left-0 z-60 w-64 h-screen bg-white border-r border-gray-200 transition-transform">
 
     <div class="h-full px-4 py-6 overflow-y-auto">
 
